@@ -199,13 +199,19 @@ export default function CodeFolioPage() {
              <div className="flex items-center gap-2">
                 <ThemeToggle />
                 <a href="/CV-Ari-Ardiansyah.pdf" download>
-                    <Button variant="outline">
+                    <Button variant="outline" className="hidden md:inline-flex">
                         Download CV <Download className="ml-2" />
+                    </Button>
+                    <Button variant="outline" size="icon" className="md:hidden">
+                        <Download />
                     </Button>
                 </a>
                 <a href="mailto:ari.ardiansyah.101@gmail.com">
-                    <Button>
+                    <Button className="hidden md:inline-flex">
                         Let's Talk <ArrowUpRight className="ml-2" />
+                    </Button>
+                     <Button size="icon" className="md:hidden">
+                        <ArrowUpRight/>
                     </Button>
                 </a>
             </div>
@@ -400,6 +406,8 @@ export default function CodeFolioPage() {
       </div>
     </div>
   );
+
+    
 
     
 
