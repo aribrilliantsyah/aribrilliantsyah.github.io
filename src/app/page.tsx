@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server, Layers, Smartphone, Bot } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server, Layers, Smartphone, Bot, Terminal, Blocks, Package, GitBranch } from 'lucide-react';
 import Image from 'next/image';
 import { Clock } from '@/components/clock';
 import { cn } from '@/lib/utils';
@@ -252,9 +252,9 @@ export default function CodeFolioPage() {
                  </div>
             </GridCard>
             
-            <GridCard>
+            <GridCard className="flex-col justify-center items-center">
                  <SectionTitle title="Time"/>
-                 <div className="flex items-center justify-center h-full">
+                 <div className="flex items-center justify-center h-full gap-3">
                     {time ? (
                         <div className="flex items-center gap-3">
                             <Clock time={time} className="size-12" />
@@ -275,7 +275,7 @@ export default function CodeFolioPage() {
                 </div>
             </GridCard>
 
-            <GridCard>
+            <GridCard className="flex-col justify-center items-center">
                  <SectionTitle title="Social Media"/>
                  <div className="flex items-center justify-center h-full gap-2">
                     {socialLinks.map((link, i) => (
@@ -325,28 +325,29 @@ export default function CodeFolioPage() {
                  </div>
             </GridCard>
 
-             <GridCard className="lg:col-span-2">
-                 <SectionTitle title="Top Skills"/>
-                 <div className="grid grid-cols-2 gap-4 h-full content-center">
-                    {topSkills.map((skill, i) => (
-                        <div key={i} className="flex flex-col items-center justify-center text-center gap-2 p-2 rounded-md bg-secondary/50">
-                            <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
-                                <skill.icon size={20}/>
-                            </div>
-                            <div className="flex flex-col items-center">
-                                <h3 className="font-medium text-sm text-foreground">{skill.title}</h3>
-                                <p className="text-xs text-muted-foreground">{skill.description}</p>
-                            </div>
+            <GridCard className="lg:col-span-2">
+                <SectionTitle title="Top Skills"/>
+                <div className="grid grid-cols-2 gap-4 h-full content-center">
+                {topSkills.map((skill, i) => (
+                    <div key={i} className="flex items-center gap-4 p-2 rounded-md bg-secondary/50">
+                        <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
+                            <skill.icon size={20}/>
                         </div>
-                    ))}
-                 </div>
+                        <div className="flex flex-col">
+                            <h3 className="font-medium text-sm text-foreground">{skill.title}</h3>
+                            <p className="text-xs text-muted-foreground">{skill.description}</p>
+                        </div>
+                    </div>
+                ))}
+                </div>
             </GridCard>
+
 
              <GridCard className="lg:col-span-2">
                 <SectionTitle title="Education"/>
                  <ScrollArea className="h-full pr-3 -mr-3">
                     <div className="space-y-4">
-                        {education.map((edu, i) => (
+                        {education.sort((a, b) => parseInt(b.date.split(' - ')[0]) - parseInt(a.date.split(' - ')[0])).map((edu, i) => (
                              <div key={i} className="flex items-start gap-4">
                                 <div className="size-10 rounded-full bg-secondary flex items-center justify-center border flex-shrink-0">
                                      <GraduationCap size={18} className="text-muted-foreground"/>
