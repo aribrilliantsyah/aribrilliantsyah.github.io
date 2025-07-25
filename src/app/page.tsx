@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 import type { FC } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, CheckCircle, Briefcase, Star } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, CheckCircle, Briefcase, Star, Building, User } from 'lucide-react';
 import Image from 'next/image';
 import { Clock } from '@/components/clock';
 import { cn } from '@/lib/utils';
@@ -164,24 +164,25 @@ const certifications = [
 const topSkills = ['Spring Boot', 'Kubernetes', 'Go', 'React.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Laravel'];
 
 const socialLinks = [
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/ari-ardiansyah101', name: 'LinkedIn' },
-  { icon: Github, href: 'https://github.com/iAri', name: 'GitHub' },
-  { icon: Mail, href: 'mailto:ari.ardiansyah.101@gmail.com', name: 'Email' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/ari-ardiansyah101' },
+  { icon: Github, href: 'https://github.com/iAri' },
+  { icon: Mail, href: 'mailto:ari.ardiansyah.101@gmail.com' },
 ];
 
-const GridCard: FC<{ children: React.ReactNode; className?: string, title?: string, icon?: React.ElementType }> = ({ children, className, title, icon: Icon }) => (
-  <Card className={cn('p-6 shadow-sm flex flex-col', className)}>
-    {title && (
-        <div className="flex items-center gap-2 mb-4">
-            {Icon && <Icon className="text-muted-foreground" size={18} />}
-            <h2 className="text-sm font-semibold text-muted-foreground">{title}</h2>
-        </div>
-    )}
-    <div className="flex-grow">
-        {children}
-    </div>
-  </Card>
+const GridCard: FC<{ children: React.ReactNode; className?: string, title?: string }> = ({ children, className, title }) => (
+    <Card className={cn("p-4 md:p-6 border border-border/50 rounded-lg flex flex-col", className)}>
+      {title && (
+          <h2 className="text-sm font-normal text-muted-foreground mb-4">{title}</h2>
+      )}
+      <div className="flex-grow">
+          {children}
+      </div>
+    </Card>
 );
+
+const SectionTitle: FC<{title: string}> = ({title}) => (
+    <h2 className="text-sm font-normal text-muted-foreground mb-4">{title}</h2>
+)
 
 
 export default function CodeFolioPage() {
@@ -190,165 +191,193 @@ export default function CodeFolioPage() {
     useEffect(() => {
         const update = () => setTime(new Date());
         update();
-        const timer = setInterval(update, 1000); // Update every second for the clock
+        const timer = setInterval(update, 1000 * 60); // Update every minute
         return () => clearInterval(timer);
     }, []);
 
   return (
-    <div className="bg-background min-h-screen text-foreground font-body">
-      <div className="max-w-7xl mx-auto p-4 md:p-8">
+    <div className="bg-background min-h-screen">
+      <div className="max-w-screen-xl mx-auto p-4 md:p-8">
         
-        <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+        <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           
-          <GridCard className="lg:col-span-4 md:col-span-2">
-            <div className="flex items-center gap-4">
-                <Image
-                src="https://placehold.co/80x80.png"
-                alt="Ari Ardiansyah"
-                width={80}
-                height={80}
-                className="rounded-full border-2 border-primary"
-                data-ai-hint="profile picture"
-                />
-                <div>
-                <h1 className="text-2xl md:text-3xl font-bold font-headline">Ari Ardiansyah</h1>
-                <p className="text-muted-foreground">Project Lead & Full Stack Developer</p>
+            <GridCard className="lg:col-span-2">
+                <div className="flex items-center gap-4">
+                    <div className="relative size-12">
+                        <Image
+                        src="https://placehold.co/80x80.png"
+                        alt="Ari Ardiansyah"
+                        width={48}
+                        height={48}
+                        className="rounded-full"
+                        data-ai-hint="profile picture"
+                        />
+                    </div>
+                    <h1 className="text-lg font-medium text-foreground">Ari Ardiansyah</h1>
                 </div>
-            </div>
-             <p className="text-foreground/90 mt-4">
-                Dengan pengalaman lebih dari 5 tahun di bidang IT, saya adalah seorang developer yang berdedikasi dan berorientasi pada hasil dengan rekam jejak karir yang solid, mulai dari Junior Developer hingga menjadi Project Lead. Saya berkembang dengan memecahkan masalah kompleks dan membangun aplikasi yang efisien dan ramah pengguna.
-            </p>
-             <a href="mailto:ari.ardiansyah.101@gmail.com" className="mt-4">
-                <Button>
-                    Contact Me <ArrowUpRight className="ml-2" />
-                </Button>
-            </a>
-          </GridCard>
+            </GridCard>
 
-          <GridCard className="lg:col-span-2 md:col-span-1" title="Socials">
-             <div className="flex flex-col justify-center h-full gap-3">
-              {socialLinks.map((link, i) => (
-                <a key={i} href={link.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group">
-                  <link.icon size={20} />
-                  <span className="font-medium">{link.name}</span>
-                   <ArrowUpRight size={16} className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-              ))}
-            </div>
-          </GridCard>
-          
-          <GridCard className="lg:col-span-3 md:col-span-2 row-span-2" title="Projects" icon={Briefcase}>
-            <ScrollArea className="h-[430px] pr-4 -mr-4">
-                <div className="space-y-4">
-                {projects.map((project, i) => (
-                    <Dialog key={i}>
-                        <DialogTrigger asChild>
-                            <div className="flex items-start gap-4 cursor-pointer group p-2 rounded-md hover:bg-secondary/50">
-                                <div className="mt-1">
-                                    <div className="size-8 rounded-md bg-secondary flex items-center justify-center text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                                        <Code size={16}/>
+            <GridCard className="col-span-1 lg:col-span-2">
+                <SectionTitle title="About"/>
+                 <p className="text-sm text-foreground/90">
+                    Dengan pengalaman lebih dari 5 tahun di bidang IT, saya adalah seorang developer yang berdedikasi dan berorientasi pada hasil dengan rekam jejak karir yang solid, mulai dari Junior Developer hingga menjadi Project Lead.
+                </p>
+            </GridCard>
+            
+            <GridCard className="col-span-1 lg:col-span-2 row-span-2">
+                <SectionTitle title="Projects"/>
+                 <ScrollArea className="h-[260px] pr-3 -mr-3">
+                    <div className="space-y-3">
+                        {projects.map((project, i) => (
+                             <Dialog key={i}>
+                                <DialogTrigger asChild>
+                                    <div className="flex items-center gap-4 cursor-pointer group">
+                                        <div className="size-10 rounded-md bg-secondary flex items-center justify-center text-muted-foreground group-hover:bg-primary/10 transition-colors">
+                                            <Code size={18}/>
+                                        </div>
+                                        <div className="flex-grow">
+                                            <h3 className="font-medium text-sm text-foreground">{project.title}</h3>
+                                            <p className="text-xs text-muted-foreground">{project.description}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="flex-grow">
-                                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">{project.title}</h3>
-                                    <p className="text-sm text-muted-foreground">{project.description}</p>
-                                    <div className="flex flex-wrap gap-1 mt-2">
+                                </DialogTrigger>
+                                <DialogContent className="sm:max-w-lg">
+                                    <DialogHeader>
+                                        <DialogTitle>{project.title}</DialogTitle>
+                                        <DialogDescription>{project.description}</DialogDescription>
+                                    </DialogHeader>
+                                    <p className="text-sm text-muted-foreground py-4">{project.longDescription}</p>
+                                    <div className="flex flex-wrap gap-2">
                                         {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
                                     </div>
+                                </DialogContent>
+                            </Dialog>
+                        ))}
+                    </div>
+                 </ScrollArea>
+            </GridCard>
+
+             <GridCard className="col-span-1 lg:col-span-2 row-span-3">
+                 <div className="relative w-full h-full rounded-md overflow-hidden">
+                    <Image
+                        src="https://placehold.co/600x800.png"
+                        alt="Portfolio image"
+                        layout="fill"
+                        objectFit="cover"
+                        data-ai-hint="sunset landscape"
+                    />
+                 </div>
+            </GridCard>
+
+            <GridCard className="col-span-1 lg:col-span-1">
+                 <SectionTitle title="Time"/>
+                 <div className="flex items-center gap-3">
+                    {time ? (
+                        <>
+                            <Clock time={time} className="size-12" />
+                            <div>
+                                <p className="text-xl font-semibold">{time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })}</p>
+                                <p className="text-xs text-muted-foreground">Bandung, ID</p>
+                            </div>
+                        </>
+                    ) : (
+                         <div className="flex items-center gap-3">
+                            <div className="size-12 rounded-full bg-secondary animate-pulse" />
+                            <div>
+                                <div className="h-6 w-16 bg-secondary rounded-md animate-pulse" />
+                                <div className="h-4 w-20 bg-secondary rounded-md mt-1 animate-pulse" />
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </GridCard>
+
+            <GridCard className="col-span-1 lg:col-span-1">
+                <SectionTitle title="Contact"/>
+                 <a href="mailto:ari.ardiansyah.101@gmail.com">
+                    <Button variant="outline" className="w-full">
+                        Let's Talk <ArrowUpRight className="ml-2" />
+                    </Button>
+                </a>
+            </GridCard>
+            
+            <GridCard className="col-span-1 lg:col-span-2 row-span-2">
+                <SectionTitle title="Experience & Education"/>
+                <ScrollArea className="h-[260px] pr-3 -mr-3">
+                    <div className="space-y-6">
+                        <div>
+                            <h3 className="font-medium text-sm mb-3 flex items-center gap-2"><Briefcase size={14}/> Experience</h3>
+                            <div className="space-y-4">
+                                {experiences.map((exp, i) => (
+                                    <div key={i}>
+                                        <div className="flex justify-between items-center">
+                                            <p className="text-sm font-medium">{exp.title}</p>
+                                            <p className="text-xs text-muted-foreground">{exp.date}</p>
+                                        </div>
+                                        <p className="text-xs text-muted-foreground">{exp.company}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                         <div>
+                            <h3 className="font-medium text-sm mb-3 flex items-center gap-2"><GraduationCap size={14}/> Education</h3>
+                            <div className="space-y-4">
+                                {education.map((edu, i) => (
+                                     <div key={i}>
+                                        <div className="flex justify-between items-center">
+                                            <p className="text-sm font-medium">{edu.institution}</p>
+                                            <p className="text-xs text-muted-foreground">{edu.date}</p>
+                                        </div>
+                                        <p className="text-xs text-muted-foreground">{edu.degree}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </ScrollArea>
+            </GridCard>
+
+            <GridCard className="col-span-1 lg:col-span-2">
+                 <SectionTitle title="Social Media"/>
+                 <div className="flex items-center gap-2">
+                    {socialLinks.map((link, i) => (
+                        <a key={i} href={link.href} target="_blank" rel="noopener noreferrer" className="flex-1">
+                            <Button variant="outline" className="w-full">
+                                <link.icon size={16}/>
+                            </Button>
+                        </a>
+                    ))}
+                 </div>
+            </GridCard>
+
+            <GridCard className="col-span-1 lg:col-span-2">
+                 <SectionTitle title="Top Skills"/>
+                 <div className="flex flex-wrap gap-2">
+                    {topSkills.map(skill => <Badge key={skill} variant="secondary">{skill}</Badge>)}
+                </div>
+            </GridCard>
+
+             <GridCard className="col-span-1 lg:col-span-4">
+                 <SectionTitle title="Certifications"/>
+                 <ScrollArea className="h-[120px] pr-3 -mr-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-2">
+                        {certifications.map((cert, i) => (
+                            <div key={i} className="flex items-center gap-2">
+                                <CheckCircle className="text-muted-foreground flex-shrink-0" size={14} />
+                                <div>
+                                    <p className="font-medium text-xs text-foreground">{cert.title}</p>
+                                    <p className="text-xs text-muted-foreground">{cert.issuer}</p>
                                 </div>
                             </div>
-                        </DialogTrigger>
-                        <DialogContent className="sm:max-w-xl">
-                            <DialogHeader>
-                                <DialogTitle>{project.title}</DialogTitle>
-                                <DialogDescription>{project.description}</DialogDescription>
-                            </DialogHeader>
-                            <p className="text-sm text-muted-foreground py-4">{project.longDescription}</p>
-                             <div className="flex flex-wrap gap-2">
-                                {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
-                            </div>
-                        </DialogContent>
-                    </Dialog>
-                ))}
-                </div>
-            </ScrollArea>
-          </GridCard>
-          
-          <GridCard className="lg:col-span-3 md:col-span-2 row-span-2" title="Experience" icon={Briefcase}>
-            <ScrollArea className="h-[430px] pr-4 -mr-4">
-              <div className="relative border-l-2 border-border/50 ml-2">
-                  {experiences.map((exp, i) => (
-                    <div key={i} className="mb-6 pl-8 relative">
-                      <div className="absolute -left-[11px] top-1.5 size-5 bg-primary rounded-full border-4 border-background"></div>
-                      <p className="text-sm text-muted-foreground">{exp.date}</p>
-                      <h3 className="font-semibold text-foreground">{exp.title}</h3>
-                      <p className="text-sm text-foreground/80">{exp.company}</p>
+                        ))}
                     </div>
-                  ))}
-                </div>
-            </ScrollArea>
-          </GridCard>
-
-          <GridCard className="lg:col-span-2 md:col-span-1" title="Top Skills" icon={Star}>
-            <div className="flex flex-wrap gap-2">
-                {topSkills.map(skill => <Badge key={skill}>{skill}</Badge>)}
-            </div>
-          </GridCard>
-          
-          <GridCard className="lg:col-span-2 md:col-span-1" title="Time">
-            <div className="flex items-center gap-4 h-full justify-center">
-                {time ? (
-                    <>
-                        <Clock time={time} className="size-20" />
-                        <div>
-                        <p className="text-3xl font-semibold">{time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })}</p>
-                        <p className="text-muted-foreground">in Bandung, ID</p>
-                        </div>
-                    </>
-                ) : (
-                    <div className="flex items-center gap-4">
-                        <div className="size-20 rounded-full bg-secondary/50 border-2 border-border animate-pulse" />
-                        <div>
-                            <div className="h-10 w-24 bg-secondary/50 rounded-md animate-pulse" />
-                            <div className="h-4 w-24 bg-secondary/50 rounded-md mt-2 animate-pulse" />
-                        </div>
-                    </div>
-                )}
-            </div>
-          </GridCard>
-          
-          <GridCard className="lg:col-span-2 md:col-span-1" title="Education" icon={GraduationCap}>
-             <div className="space-y-4">
-                {education.map((edu, i) => (
-                    <div key={i}>
-                         <p className="text-sm text-muted-foreground">{edu.date}</p>
-                         <h3 className="font-semibold text-foreground">{edu.institution}</h3>
-                         <p className="text-sm text-foreground/80">{edu.degree}</p>
-                    </div>
-                ))}
-            </div>
-          </GridCard>
-          
-          <GridCard className="lg:col-span-6 md:col-span-2" title="Certifications" icon={CheckCircle}>
-             <ScrollArea className="h-[200px] pr-4 -mr-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3">
-                    {certifications.map((cert, i) => (
-                        <div key={i} className="flex items-center gap-3">
-                            <CheckCircle className="text-primary flex-shrink-0" size={16} />
-                            <div>
-                                <p className="font-semibold text-sm text-foreground">{cert.title}</p>
-                                <p className="text-xs text-muted-foreground">{cert.issuer}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </ScrollArea>
-          </GridCard>
+                 </ScrollArea>
+            </GridCard>
 
         </main>
         
-        <footer className="text-center mt-12 text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Ari Ardiansyah. Crafted with <span className="text-red-500">❤️</span> and Next.js</p>
+        <footer className="text-center mt-8 text-xs text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} Ari Ardiansyah. Crafted with Next.js</p>
         </footer>
       </div>
     </div>
