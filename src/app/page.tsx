@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server, Layers, Smartphone, Bot } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server, Layers, Smartphone, Bot, CodeXml, Combine } from 'lucide-react';
 import Image from 'next/image';
 import { Clock } from '@/components/clock';
 import { cn } from '@/lib/utils';
@@ -164,9 +164,12 @@ const GridCard: FC<{ children: React.ReactNode; className?: string }> = ({ child
     </Card>
 );
 
-const SectionTitle: FC<{title: string}> = ({title}) => (
-    <h2 className="text-sm font-normal text-muted-foreground mb-4">{title}</h2>
-)
+const SectionTitle: FC<{ title: string }> = ({ title }) => (
+    <div className="flex justify-between items-center mb-4">
+        <h2 className="text-sm font-normal text-muted-foreground">{title}</h2>
+        <span className="text-sm font-normal text-muted-foreground">Ari Ardiansyah</span>
+    </div>
+);
 
 
 export default function CodeFolioPage() {
@@ -331,14 +334,14 @@ export default function CodeFolioPage() {
 
              <GridCard className="lg:col-span-2">
                 <SectionTitle title="Top Skills"/>
-                <div className="grid grid-cols-2 grid-rows-3 gap-4 h-full">
+                 <div className="grid grid-cols-2 grid-rows-3 gap-x-4 gap-y-4 h-full">
                     {topSkills.map((skill, i) => (
-                        <div key={i} className="flex items-center gap-4 p-2 rounded-md bg-secondary/50">
-                            <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
+                        <div key={i} className="flex items-start gap-4 p-2 rounded-md bg-secondary/50">
+                            <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0 mt-1">
                                 <skill.icon size={20}/>
                             </div>
                             <div className="flex-1">
-                                <h3 className="font-medium text-sm text-foreground">{skill.title}</h3>
+                                <h3 className="font-medium text-base text-foreground">{skill.title}</h3>
                                 <p className="text-xs text-muted-foreground">{skill.description}</p>
                             </div>
                         </div>
@@ -351,12 +354,20 @@ export default function CodeFolioPage() {
                 <SectionTitle title="Education"/>
                  <ScrollArea className="h-full pr-3 -mr-3">
                     <div className="space-y-4">
-                        {education.sort((a, b) => {
+                         {education.sort((a, b) => {
                             const aYear = parseInt(a.date.split(' - ')[0]);
                             const bYear = parseInt(b.date.split(' - ')[0]);
                             if (!isNaN(aYear) && !isNaN(bYear)) {
                                 return bYear - aYear;
                             }
+                             // Handle cases like "Feb - Jul 2022"
+                            const aDate = new Date(a.date.split(' - ')[1]);
+                            const bDate = new Date(b.date.split(' - ')[1]);
+
+                            if(!isNaN(aDate.getTime()) && !isNaN(bDate.getTime())) {
+                                return bDate.getTime() - aDate.getTime();
+                            }
+                            
                             if (a.date.includes('Present')) return -1;
                             if (b.date.includes('Present')) return 1;
                             return 0;
