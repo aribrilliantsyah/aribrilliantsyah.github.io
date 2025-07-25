@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server, Layers, Smartphone, Bot, Terminal, Blocks, Package, GitBranch } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server, Layers, Smartphone, Bot } from 'lucide-react';
 import Image from 'next/image';
 import { Clock } from '@/components/clock';
 import { cn } from '@/lib/utils';
@@ -18,6 +18,7 @@ import {
   DialogDescription,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 
 const projects = [
@@ -191,11 +192,14 @@ export default function CodeFolioPage() {
                 <Image src="https://placehold.co/40x40.png" alt="Ari Ardiansyah" width={40} height={40} className="rounded-full" data-ai-hint="profile picture" />
                 <h1 className="text-xl font-bold font-headline">Ari Ardiansyah</h1>
             </div>
-            <a href="mailto:ari.ardiansyah.101@gmail.com">
-                <Button variant="outline">
-                    Let's Talk <ArrowUpRight className="ml-2" />
-                </Button>
-            </a>
+             <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <a href="mailto:ari.ardiansyah.101@gmail.com">
+                    <Button variant="outline">
+                        Let's Talk <ArrowUpRight className="ml-2" />
+                    </Button>
+                </a>
+            </div>
         </header>
 
         <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -325,20 +329,20 @@ export default function CodeFolioPage() {
                  </div>
             </GridCard>
 
-            <GridCard className="lg:col-span-2">
+             <GridCard className="lg:col-span-2">
                 <SectionTitle title="Top Skills"/>
                 <div className="grid grid-cols-2 grid-rows-3 gap-4 h-full">
-                {topSkills.map((skill, i) => (
-                    <div key={i} className="flex items-center gap-4 p-2 rounded-md bg-secondary/50">
-                        <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
-                            <skill.icon size={20}/>
+                    {topSkills.map((skill, i) => (
+                        <div key={i} className="flex items-center gap-4 p-2 rounded-md bg-secondary/50">
+                            <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
+                                <skill.icon size={20}/>
+                            </div>
+                            <div className="flex-1">
+                                <h3 className="font-medium text-sm text-foreground">{skill.title}</h3>
+                                <p className="text-xs text-muted-foreground">{skill.description}</p>
+                            </div>
                         </div>
-                        <div className="flex flex-col">
-                            <h3 className="font-medium text-sm text-foreground">{skill.title}</h3>
-                            <p className="text-xs text-muted-foreground">{skill.description}</p>
-                        </div>
-                    </div>
-                ))}
+                    ))}
                 </div>
             </GridCard>
 
@@ -384,5 +388,3 @@ export default function CodeFolioPage() {
     </div>
   );
 }
-
-    
