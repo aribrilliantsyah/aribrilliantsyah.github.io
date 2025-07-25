@@ -160,7 +160,7 @@ const topSkills = [
 ];
 
 const GridCard: FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
-    <Card className={cn("p-4 md:p-6 border border-border/50 rounded-lg flex flex-col shadow-sm", className)}>
+    <Card className={cn("p-4 md:p-6 border border-border rounded-lg flex flex-col", className)}>
         {children}
     </Card>
 );
@@ -256,11 +256,11 @@ export default function CodeFolioPage() {
              <GridCard className="col-span-1 lg:col-span-2 row-span-3 !p-0">
                  <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
-                        src="https://images.unsplash.com/photo-1611638281871-1063d3e76e1f?q=80&w=1964"
+                        src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1964"
                         alt="Portfolio image"
                         layout="fill"
                         objectFit="cover"
-                        data-ai-hint="city night"
+                        data-ai-hint="nature landscape"
                     />
                  </div>
             </GridCard>
@@ -402,5 +402,7 @@ export default function CodeFolioPage() {
   );
 }
 
+
+    
 
     
