@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { InfoCard } from '@/components/info-card';
 import { DetailDialog } from '@/components/detail-dialog';
 import { BentoCard, BentoGrid } from '@/components/bento-grid';
-import { Github, Linkedin, Mail, User, Code, Briefcase, Lightbulb, ExternalLink, ArrowRight } from 'lucide-react';
+import { Github, Linkedin, Mail, User, Code, Briefcase, Lightbulb, ExternalLink, ArrowRight, Award } from 'lucide-react';
 import Image from 'next/image';
 
 interface Detail {
@@ -21,54 +21,79 @@ interface Detail {
 
 const projects: Detail[] = [
   {
-    title: 'POS API',
-    description: 'A robust Point-of-Sale API for retail applications.',
-    tags: ['Backend', 'API', 'Node.js', 'Express', 'MongoDB'],
+    title: 'Enterprise Application with Spring Boot',
+    description: 'Developing scalable and robust enterprise-level applications.',
+    tags: ['Spring Boot', 'Java', 'Microservices', 'API Design'],
     longDescription:
-      'Designed and developed a comprehensive RESTful API for a Point-of-Sale system. Features include inventory management, sales tracking, user authentication, and receipt generation. Built with a focus on scalability and security, serving as the backbone for multiple client-side applications.',
+      'Led the design and development of enterprise applications using Spring Boot. Focused on creating scalable microservices architecture, ensuring high performance, and maintaining robust security protocols. Responsible for the full development lifecycle, from conception to deployment.',
     image: 'https://placehold.co/600x400.png',
     imageHint: 'api code',
-    link: 'https://github.com'
+    link: 'https://github.com/iAri'
   },
   {
-    title: 'Kubernetes Log Catcher',
-    description: 'A service to aggregate and analyze logs from Kubernetes clusters.',
-    tags: ['DevOps', 'Go', 'Kubernetes', 'gRPC'],
+    title: 'Kubernetes Container Orchestration',
+    description: 'Managing and scaling containerized applications with Kubernetes.',
+    tags: ['Kubernetes', 'DevOps', 'Go', 'Containerization', 'CI/CD'],
     longDescription:
-      'Created a high-performance log aggregation service in Go that collects, parses, and stores logs from various pods within a Kubernetes cluster. The system provides real-time log searching and analysis capabilities through a gRPC interface, significantly improving debugging and monitoring efficiency.',
+      'Implemented and managed container orchestration using Kubernetes for various projects. Focused on automating deployment, scaling, and operations of application containers across clusters of hosts. Improved system reliability and deployment efficiency significantly.',
     image: 'https://placehold.co/600x400.png',
     imageHint: 'kubernetes server',
   },
   {
-    title: 'VA System',
-    description: 'An intelligent virtual assistant for customer support automation.',
-    tags: ['AI', 'Python', 'NLP', 'FastAPI'],
+    title: 'Backend Development with Go',
+    description: 'Building high-performance backend services using Go.',
+    tags: ['Go', 'Backend', 'Performance', 'API'],
     longDescription:
-      'Developed a virtual assistant system using natural language processing (NLP) to automate responses to common customer support queries. The system integrates with existing knowledge bases and ticketing systems, reducing response times and freeing up human agents to handle more complex issues.',
+      'Developed high-performance backend services and APIs using the Go programming language. Leveraged Go\'s concurrency model to build efficient, scalable, and easy-to-maintain systems for high-traffic applications.',
     image: 'https://placehold.co/600x400.png',
-    imageHint: 'virtual assistant',
-    link: 'https://github.com'
+    imageHint: 'modern code',
+    link: 'https://github.com/iAri'
   },
 ];
 
 const experiences: Detail[] = [
     {
-        title: 'Senior Backend Engineer',
-        description: 'Tech Solutions Inc. | 2020 - Present',
-        tags: ['Python', 'Django', 'AWS', 'PostgreSQL', 'Docker'],
-        longDescription: 'Led the development of scalable backend services for enterprise clients. Architected and implemented microservices on AWS, mentored junior engineers, and improved system performance by 30% through targeted optimizations. Championed best practices in code quality and testing.',
+        title: 'Project Lead Developer',
+        description: 'PT Digital Amore Kriyanesia | Jul 2023 - Present',
+        tags: ['Project Management', 'System Architecture', 'Team Leadership', 'Agile'],
+        longDescription: 'Managed the entire project lifecycle, from analyzing business flows and data structures to leading the development team. Successfully delivered high-quality projects on time by fostering a collaborative and innovative work environment.',
         image: 'https://placehold.co/600x400.png',
-        imageHint: 'office building',
+        imageHint: 'team meeting',
     },
     {
-        title: 'Fullstack Developer',
-        description: 'Creative Agency Co. | 2018 - 2020',
-        tags: ['JavaScript', 'React', 'Node.js', 'GraphQL', 'Heroku'],
-        longDescription: 'Built and maintained full-stack applications for various clients, from e-commerce sites to interactive marketing campaigns. Collaborated closely with designers and project managers to deliver high-quality, user-centric products on tight deadlines.',
+        title: 'Full Stack Developer',
+        description: 'PT Digital Amore Kriyanesia | Apr 2020 - Dec 2023',
+        tags: ['Full Stack', 'RESTful API', 'Database Design', 'Web', 'Mobile'],
+        longDescription: 'Developed comprehensive solutions across desktop, web, and mobile platforms. Designed RESTful API services and database structures, integrating various technologies to create seamless and complete applications.',
         image: 'https://placehold.co/600x400.png',
-        imageHint: 'team collaboration',
+        imageHint: 'developer desk',
+    },
+    {
+        title: 'Web Developer',
+        description: 'PT Digital Amore Kriyanesia | Jul 2019 - Dec 2020',
+        tags: ['Web Development', 'CMS', 'Frontend', 'Backend'],
+        longDescription: 'Created custom management systems tailored to organizational needs. Developed intuitive user interfaces and implemented efficient backend functionalities to ensure a smooth user experience.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'website code',
+    },
+     {
+        title: 'Freelance Software Engineer',
+        description: 'Self-Employed | Jul 2017 - Present',
+        tags: ['Freelance', 'Software Engineering', 'Web Development'],
+        longDescription: 'Provided freelance software engineering and web development services to various clients. Successfully delivered projects ranging from custom web applications to system integrations, demonstrating versatility and a commitment to quality.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'home office',
     },
 ];
+
+const certifications = [
+    { name: 'JavaScript Dasar' },
+    { name: 'Unix Command Line Dasar' },
+    { name: 'Project Management Associate' },
+    { name: 'Web 101' },
+    { name: 'Git & Github Dasar' },
+];
+
 
 const bentoItems = [
     {
@@ -79,10 +104,10 @@ const bentoItems = [
         content: (
             <div className="space-y-4 text-base text-muted-foreground">
                 <p>
-                    I am a dedicated and results-driven developer with a strong foundation in backend technologies and a keen eye for frontend architecture. With several years of experience in the industry, I thrive on solving complex problems and building applications that are both efficient and user-friendly. 
+                    With over 5 years in IT, I am a dedicated and results-driven developer with a solid track record of career progression from a Junior Developer to a Project Lead. My loyalty and adaptability are demonstrated by my 6-year tenure at PT Digital Amore Kriyanesia.
                 </p>
                 <p>
-                    My journey in software development is fueled by a constant desire to learn and adapt to new technologies, ensuring that I can deliver modern and effective solutions.
+                    I thrive on solving complex problems and building efficient, user-friendly applications using modern technologies like Go, Spring Boot, and Kubernetes.
                 </p>
             </div>
         )
@@ -122,13 +147,13 @@ const bentoItems = [
     },
     {
         icon: Code,
-        title: "Featured Project",
+        title: "Featured Skill: Go",
         background: <Image src="https://placehold.co/600x400.png" alt="Project background" layout="fill" objectFit="cover" className="absolute -z-10 opacity-30" data-ai-hint="code laptop" />,
         className: "col-span-12 lg:col-span-6",
         content: (
             <div className="space-y-2">
-                <h3 className="font-semibold text-foreground">{projects[0].title}</h3>
-                <p className="text-sm text-muted-foreground">{projects[0].description}</p>
+                <h3 className="font-semibold text-foreground">High-Performance Backend</h3>
+                <p className="text-sm text-muted-foreground">Building fast, scalable, and concurrent systems with the power of Go. Ideal for modern backend development and microservices.</p>
                  <a href="#projects" className="inline-flex items-center text-sm font-semibold text-primary hover:underline">
                     Explore more projects <ArrowRight className="ml-1 h-4 w-4" />
                 </a>
@@ -156,8 +181,8 @@ export default function CodeFolioPage() {
   };
 
   return (
-    <div className="bg-background min-h-screen">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
+    <div className="bg-background min-h-screen text-text-light dark:text-text-dark">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-bg-light/80 dark:bg-bg-dark/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
@@ -187,11 +212,11 @@ export default function CodeFolioPage() {
             <h1 className="text-5xl md:text-7xl font-headline font-extrabold tracking-tight text-foreground animate-fade-in-up">
               Ari Ardiansyah
             </h1>
-            <p className="mt-4 text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
-              Fullstack Developer / Backend Engineer
+            <p className="mt-4 text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up animation-delay-300">
+              Project Lead Developer | Full Stack Developer
             </p>
-            <p className="mt-2 text-md md:text-lg text-muted-foreground/80 max-w-2xl mx-auto animate-fade-in-up animation-delay-500">
-              Crafting robust and scalable solutions with a passion for clean code.
+            <p className="mt-2 text-md md:text-lg text-muted-foreground/80 max-w-3xl mx-auto animate-fade-in-up animation-delay-500">
+              Crafting scalable and innovative solutions with modern technologies like Go, Spring Boot, and Kubernetes.
             </p>
           </div>
         </section>
@@ -206,7 +231,7 @@ export default function CodeFolioPage() {
         </section>
         
         {/* Projects Showcase */}
-        <Section id="projects" title="Projects" icon={<Code size={24} />}>
+        <Section id="projects" title="Projects & Expertise" icon={<Code size={24} />}>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projects.map((project, index) => (
                     <InfoCard
@@ -232,6 +257,18 @@ export default function CodeFolioPage() {
             </div>
         </Section>
         
+         {/* Certifications Section */}
+        <Section id="certifications" title="Certifications" icon={<Award size={24} />}>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                {certifications.map((cert, index) => (
+                    <div key={index} className="bg-card p-4 rounded-lg shadow-md flex items-center justify-center">
+                        <p className="font-medium text-foreground">{cert.name}</p>
+                    </div>
+                ))}
+            </div>
+        </Section>
+
+
         {/* Contact Information */}
         <footer id="contact" className="bg-secondary/50">
           <Section id="contact-inner" title="Get In Touch" icon={<Mail size={24} />}>
