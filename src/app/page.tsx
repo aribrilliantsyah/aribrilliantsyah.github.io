@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote } from 'lucide-react';
 import Image from 'next/image';
 import { Clock } from '@/components/clock';
 import { cn } from '@/lib/utils';
@@ -286,11 +286,11 @@ export default function CodeFolioPage() {
                     <div className="space-y-6">
                         <div className="relative space-y-6 before:absolute before:inset-y-0 before:w-0.5 before:bg-border before:left-5">
                             {experiences.map((exp, i) => (
-                                <div key={i} className="flex items-start gap-4 pl-10 relative">
+                                <div key={i} className="flex items-start gap-6 pl-12 relative">
                                     <div className="absolute left-0 top-0.5 mt-px size-10 rounded-full bg-secondary flex items-center justify-center border">
                                        <Briefcase size={18} className="text-muted-foreground"/>
                                     </div>
-                                    <div>
+                                    <div className="space-y-1">
                                         <p className="text-xs text-muted-foreground">{exp.date}</p>
                                         <p className="text-sm font-medium">{exp.title}</p>
                                         <p className="text-xs text-muted-foreground">{exp.company}</p>
@@ -306,6 +306,15 @@ export default function CodeFolioPage() {
                  <SectionTitle title="Years of Experience"/>
                  <div className="flex items-center justify-center h-full">
                     <p className="text-6xl font-bold text-foreground">{yearsOfExperience}</p>
+                 </div>
+            </GridCard>
+
+             <GridCard>
+                <SectionTitle title="Quote"/>
+                 <div className="flex flex-col items-center justify-center h-full text-center">
+                    <Quote className="size-8 text-muted-foreground mb-2" />
+                    <p className="text-sm italic text-foreground/80">"Stay hungry, stay foolish."</p>
+                    <p className="text-xs text-muted-foreground mt-2">- Steve Jobs</p>
                  </div>
             </GridCard>
 
@@ -329,7 +338,7 @@ export default function CodeFolioPage() {
                 </ScrollArea>
             </GridCard>
 
-            <GridCard className="lg:col-span-2">
+            <GridCard>
                  <SectionTitle title="Social Media"/>
                  <div className="flex items-center gap-2">
                     {socialLinks.map((link, i) => (
@@ -340,6 +349,10 @@ export default function CodeFolioPage() {
                         </a>
                     ))}
                  </div>
+            </GridCard>
+
+            <GridCard>
+                {/* Empty card for layout balance */}
             </GridCard>
         </main>
         
