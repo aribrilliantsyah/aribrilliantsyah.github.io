@@ -155,14 +155,9 @@ const topSkills = [
     { icon: Server, title: 'DevOps', description: 'Kubernetes, Docker, CI/CD' }
 ]
 
-const GridCard: FC<{ children: React.ReactNode; className?: string, title?: string }> = ({ children, className, title }) => (
+const GridCard: FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
     <Card className={cn("p-4 md:p-6 border border-border/50 rounded-lg flex flex-col shadow-sm", className)}>
-      {title && (
-          <h2 className="text-sm font-normal text-muted-foreground mb-4">{title}</h2>
-      )}
-      <div className="flex-grow flex flex-col">
-          {children}
-      </div>
+        {children}
     </Card>
 );
 
@@ -246,15 +241,15 @@ export default function CodeFolioPage() {
              <GridCard className="col-span-1 lg:col-span-2 row-span-3">
                  <div className="relative w-full h-full rounded-md overflow-hidden">
                     <Image
-                        src="https://placehold.co/600x800.png"
+                        src="https://images.unsplash.com/photo-1531635050085-3002638426d0?q=80&w=1964"
                         alt="Portfolio image"
                         layout="fill"
                         objectFit="cover"
-                        data-ai-hint="abstract texture"
+                        data-ai-hint="city night"
                     />
                  </div>
             </GridCard>
-
+            
             <GridCard>
                  <SectionTitle title="Time"/>
                  <div className="flex items-center gap-3">
@@ -337,7 +332,7 @@ export default function CodeFolioPage() {
                                 <skill.icon size={20}/>
                             </div>
                             <div>
-                                <h3 className="font-medium text-sm text-foreground">{skill.title}</h3>
+                                <h3 className="font-medium text-base text-foreground">{skill.title}</h3>
                                 <p className="text-xs text-muted-foreground">{skill.description}</p>
                             </div>
                         </div>
