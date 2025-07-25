@@ -189,7 +189,7 @@ export default function CodeFolioPage() {
             </div>
             <a href="mailto:ari.ardiansyah.101@gmail.com">
                 <Button variant="outline">
-                    Contact Me <ArrowUpRight className="ml-2" />
+                    Let's Talk <ArrowUpRight className="ml-2" />
                 </Button>
             </a>
         </header>
@@ -271,15 +271,6 @@ export default function CodeFolioPage() {
                 </div>
             </GridCard>
 
-            <GridCard>
-                <SectionTitle title="Contact"/>
-                 <a href="mailto:ari.ardiansyah.101@gmail.com">
-                    <Button variant="outline" className="w-full">
-                        Let's Talk <ArrowUpRight className="ml-2" />
-                    </Button>
-                </a>
-            </GridCard>
-            
             <GridCard className="col-span-1 lg:col-span-2 row-span-2">
                 <SectionTitle title="Experience"/>
                 <ScrollArea className="h-[260px] pr-3 -mr-3">
@@ -307,6 +298,10 @@ export default function CodeFolioPage() {
                  <div className="flex items-center justify-center h-full">
                     <p className="text-6xl font-bold text-foreground">{yearsOfExperience}</p>
                  </div>
+            </GridCard>
+            
+            <GridCard>
+                {/* Empty card for layout balance */}
             </GridCard>
 
              <GridCard>
