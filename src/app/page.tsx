@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server, Layers, Smartphone, Bot, CodeXml, Combine } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server, Layers, Smartphone, Bot, CodeXml, Combine, Download } from 'lucide-react';
 import Image from 'next/image';
 import { Clock } from '@/components/clock';
 import { cn } from '@/lib/utils';
@@ -198,8 +198,13 @@ export default function CodeFolioPage() {
             </div>
              <div className="flex items-center gap-2">
                 <ThemeToggle />
-                <a href="mailto:ari.ardiansyah.101@gmail.com">
+                <a href="/CV-Ari-Ardiansyah.pdf" download>
                     <Button variant="outline">
+                        Download CV <Download className="ml-2" />
+                    </Button>
+                </a>
+                <a href="mailto:ari.ardiansyah.101@gmail.com">
+                    <Button>
                         Let's Talk <ArrowUpRight className="ml-2" />
                     </Button>
                 </a>
@@ -342,7 +347,7 @@ export default function CodeFolioPage() {
                                 <skill.icon size={20}/>
                             </div>
                             <div className="flex-1">
-                                <h3 className="font-medium text-base text-foreground mb-1">{skill.title}</h3>
+                                <h3 className="font-medium text-sm text-foreground mb-1">{skill.title}</h3>
                                 <p className="text-xs text-muted-foreground">{skill.description}</p>
                             </div>
                         </div>
@@ -385,7 +390,7 @@ export default function CodeFolioPage() {
             </GridCard>
         </main>
         
-        <footer className="flex justify-between items-center mt-16 pt-8 border-t text-xs text-muted-foreground">
+        <footer className="flex justify-between items-center mt-12 pt-8 border-t text-xs text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Ari Ardiansyah.</p>
           <div className="flex items-center gap-1">
             <p>Crafted with</p>
@@ -396,3 +401,6 @@ export default function CodeFolioPage() {
     </div>
   );
 }
+
+
+    
