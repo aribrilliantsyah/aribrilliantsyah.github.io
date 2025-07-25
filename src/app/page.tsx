@@ -165,10 +165,10 @@ const GridCard: FC<{ children: React.ReactNode; className?: string }> = ({ child
     </Card>
 );
 
-const SectionTitle: FC<{ title: string }> = ({ title }) => (
+const SectionTitle: FC<{ title: string; showName?: boolean }> = ({ title, showName }) => (
     <div className="flex justify-between items-center mb-4">
         <h2 className="text-sm font-normal text-muted-foreground">{title}</h2>
-        <span className="text-sm font-normal text-muted-foreground">Ari Ardiansyah</span>
+        {showName && <span className="text-sm font-normal text-muted-foreground">Ari Ardiansyah</span>}
     </div>
 );
 
@@ -209,7 +209,7 @@ export default function CodeFolioPage() {
         <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             
             <GridCard className="lg:col-span-2">
-                <SectionTitle title="About"/>
+                <SectionTitle title="About" showName />
                  <p className="text-sm text-foreground/90 text-justify">
                     With over 7 years of dedicated experience in the IT industry, I am a results-oriented developer with a proven career track record, advancing from a Junior Developer to a Project Lead. I specialize in building robust and scalable applications, leveraging modern technologies like Spring Boot, Kubernetes, and Go. My journey reflects a commitment to continuous learning, collaboration, and delivering high-quality digital solutions.
                 </p>
@@ -402,5 +402,7 @@ export default function CodeFolioPage() {
       </div>
     </div>
   );
+
+    
 
     
