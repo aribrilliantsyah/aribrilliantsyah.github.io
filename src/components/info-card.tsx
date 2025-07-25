@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 interface InfoCardProps {
   title: string;
@@ -23,7 +24,7 @@ export function InfoCard({
   onClick,
   layout = 'vertical',
 }: InfoCardProps) {
-    const cardClasses = "w-full transition-all duration-300 ease-in-out hover:shadow-primary/20 hover:shadow-lg hover:-translate-y-1 cursor-pointer group bg-card overflow-hidden backdrop-blur-sm border-border/20 hover:border-border";
+    const cardClasses = "w-full cursor-pointer group bg-card overflow-hidden border-2 rounded-lg neo-shadow transition-transform-shadow hover-lift";
 
     if (layout === 'horizontal') {
         return (
@@ -33,7 +34,7 @@ export function InfoCard({
             >
                 <div className="flex flex-col md:flex-row items-center">
                     {image && (
-                         <div className="w-full md:w-1/3 h-48 md:h-full relative overflow-hidden">
+                         <div className="w-full md:w-1/3 h-48 md:h-full relative overflow-hidden rounded-l-md border-r-2">
                             <Image
                                 src={image}
                                 alt={title}
@@ -66,11 +67,11 @@ export function InfoCard({
   
     return (
         <Card
-            className={`${cardClasses} flex flex-col`}
+            className={cn(cardClasses, "flex flex-col")}
             onClick={onClick}
         >
             {image && (
-                <div className="w-full h-48 relative overflow-hidden">
+                <div className="w-full h-48 relative overflow-hidden border-b-2">
                     <Image
                         src={image}
                         alt={title}
@@ -89,7 +90,7 @@ export function InfoCard({
                 <CardContent className="p-0 mt-4 flex-grow flex items-end">
                     <div className="flex flex-wrap gap-2">
                         {tags.map((tag) => (
-                            <Badge key={tag} variant="secondary" className="bg-accent/80 text-accent-foreground">
+                            <Badge key={tag} variant="secondary" className="border-2 neo-shadow-sm">
                                 {tag}
                             </Badge>
                         ))}

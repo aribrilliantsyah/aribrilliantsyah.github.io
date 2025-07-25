@@ -185,7 +185,7 @@ const bentoItems = [
     {
         icon: User,
         title: "About Me",
-        background: <Image src="https://placehold.co/600x400.png" alt="About me background" layout="fill" objectFit="cover" className="absolute -z-10 opacity-30" data-ai-hint="abstract geometric" />,
+        background: <div className="absolute -z-10 bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-secondary/50 to-transparent" />,
         className: "col-span-12 lg:col-span-8",
         content: (
             <div className="space-y-4 text-base text-muted-foreground">
@@ -234,7 +234,7 @@ const bentoItems = [
     {
         icon: Code,
         title: "Featured Skill: Go",
-        background: <Image src="https://placehold.co/600x400.png" alt="Project background" layout="fill" objectFit="cover" className="absolute -z-10 opacity-30" data-ai-hint="code laptop" />,
+        background:  <div className="absolute -z-10 bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-accent/30 to-transparent" />,
         className: "col-span-12 lg:col-span-6",
         content: (
             <div className="space-y-2">
@@ -250,8 +250,8 @@ const bentoItems = [
 
 const Section: FC<{ id: string; title: string; icon: React.ReactNode; children: React.ReactNode; className?: string }> = ({ id, title, icon, children, className }) => (
   <section id={id} className={`w-full max-w-5xl mx-auto py-12 md:py-20 px-4 md:px-0 ${className}`}>
-    <div className="flex items-center gap-3 mb-8">
-      <div className="flex items-center justify-center size-10 rounded-full bg-primary/20 text-primary">{icon}</div>
+    <div className="flex items-center gap-4 mb-8">
+      <div className="flex items-center justify-center size-12 rounded-md bg-secondary text-foreground border-2 neo-shadow-sm">{icon}</div>
       <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">{title}</h2>
     </div>
     {children}
@@ -268,7 +268,7 @@ export default function CodeFolioPage() {
 
   return (
     <div className="bg-background min-h-screen text-foreground">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
@@ -282,7 +282,7 @@ export default function CodeFolioPage() {
                     </div>
                 </div>
                 <a href="#contact">
-                  <Button variant="default">
+                  <Button>
                     Contact Me
                     <Mail className="ml-2" />
                   </Button>
@@ -347,7 +347,7 @@ export default function CodeFolioPage() {
         <Section id="certifications" title="Certifications" icon={<Award size={24} />}>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
                 {certifications.map((cert, index) => (
-                    <div key={index} className="bg-card p-4 rounded-lg shadow-md flex items-center justify-center">
+                    <div key={index} className="bg-card p-4 rounded-lg border-2 neo-shadow flex items-center justify-center">
                         <p className="font-medium text-foreground">{cert.name}</p>
                     </div>
                 ))}
@@ -356,24 +356,24 @@ export default function CodeFolioPage() {
 
 
         {/* Contact Information */}
-        <footer id="contact" className="bg-secondary/50">
+        <footer id="contact" className="bg-muted">
           <Section id="contact-inner" title="Get In Touch" icon={<Mail size={24} />}>
             <p className="text-center text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.
             </p>
             <div className="flex justify-center items-center gap-6 flex-wrap">
                 <a href="mailto:ari.ardiansyah.101@gmail.com" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" size="lg" className="h-14 px-6 text-lg bg-background/50 backdrop-blur-sm">
+                    <Button variant="outline" size="lg">
                         <Mail className="mr-3" /> Email
                     </Button>
                 </a>
                 <a href="https://www.linkedin.com/in/ari-ardiansyah101" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" size="lg" className="h-14 px-6 text-lg bg-background/50 backdrop-blur-sm">
+                    <Button variant="outline" size="lg">
                         <Linkedin className="mr-3" /> LinkedIn
                     </Button>
                 </a>
                 <a href="https://github.com/iAri" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" size="lg" className="h-14 px-6 text-lg bg-background/50 backdrop-blur-sm">
+                    <Button variant="outline" size="lg">
                         <Github className="mr-3" /> GitHub
                     </Button>
                 </a>
