@@ -283,8 +283,8 @@ export default function CodeFolioPage() {
                  <SectionTitle title="Social Media"/>
                  <div className="flex items-center justify-center h-full gap-2">
                     {socialLinks.map((link, i) => (
-                        <a key={i} href={link.href} target="_blank" rel="noopener noreferrer" className="flex-1">
-                            <Button variant="outline" size="icon" className="w-full h-12 rounded-full">
+                        <a key={i} href={link.href} target="_blank" rel="noopener noreferrer">
+                            <Button variant="outline" size="icon" className="w-12 h-12 rounded-full">
                                 <link.icon size={16}/>
                             </Button>
                         </a>
