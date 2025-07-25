@@ -154,7 +154,7 @@ const topSkills = [
     { icon: Database, title: 'Databases', description: 'MySQL, PostgreSQL, Redis' },
     { icon: Server, title: 'DevOps', description: 'Kubernetes, Docker, CI/CD' },
     { icon: Layers, title: 'Full Stack', description: 'End-to-end development' },
-    { icon: Bot, title: 'Laravel', description: 'PHP Framework' },
+    { icon: Smartphone, title: 'Mobile', description: 'Java Android, Flutter' },
 ];
 
 const GridCard: FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
@@ -374,3 +374,5 @@ export default function CodeFolioPage() {
     </div>
   );
 }
+
+    
