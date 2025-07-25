@@ -92,6 +92,30 @@ const projects: Detail[] = [
         image: 'https://placehold.co/600x400.png',
         imageHint: 'charity donation',
     },
+    {
+        title: 'Digital Web Branch - BPR Nusamba Cepiring',
+        description: 'Web-based customer acquisition system.',
+        tags: ['CodeIgniter'],
+        longDescription: 'Developed a web-based customer acquisition system managing the entire process from initial application to Account Officer meetings and final customer registration.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'customer acquisition',
+    },
+    {
+        title: 'Koperasi DIY',
+        description: 'Cooperative management system.',
+        tags: ['CodeIgniter'],
+        longDescription: 'Sistem koperasi management system featuring: Member management, deposit and withdrawal processing, rental management, loan and savings management, and an integrated accounting module.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'cooperative system',
+    },
+    {
+        title: 'School Management and Payment System',
+        description: 'School management system with accounting.',
+        tags: ['CodeIgniter'],
+        longDescription: 'Developed a comprehensive school management system with integrated accounting features.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'school system',
+    },
 ];
 
 const experiences: Detail[] = [
@@ -123,18 +147,37 @@ const experiences: Detail[] = [
         title: 'Freelance Software Engineer',
         description: 'Self-Employed | Jul 2017 - Present',
         tags: ['Freelance', 'Software Engineering', 'Web Development'],
-        longDescription: 'Provided freelance software engineering and web development services to various clients. Successfully delivered projects ranging from custom web applications to system integrations, demonstrating versatility and a commitment to quality.',
+        longDescription: 'Provided freelance software engineering and web development services to various clients, including a Web Developer role at Akeno Multimedia Solution (Oct 2020 - Feb 2023). Successfully delivered projects ranging from custom web applications to system integrations, demonstrating versatility and a commitment to quality.',
         image: 'https://placehold.co/600x400.png',
         imageHint: 'home office',
+    },
+    {
+        title: 'Junior Web Developer',
+        description: 'VMT Software | Jun 2018 - Jul 2019',
+        tags: ['Web Development', 'Junior Developer'],
+        longDescription: 'Started my professional journey as a Junior Web Developer, gaining foundational experience in web technologies and contributing to various projects.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'learning code',
     },
 ];
 
 const certifications = [
-    { name: 'JavaScript Dasar' },
-    { name: 'Unix Command Line Dasar' },
-    { name: 'Project Management Associate' },
-    { name: 'Web 101' },
+    { name: 'CSS Dasar' },
     { name: 'Git & Github Dasar' },
+    { name: 'HTML Dasar' },
+    { name: 'Intro to Coding' },
+    { name: 'JavaScript Dasar' },
+    { name: 'JavaScript Intermediate' },
+    { name: 'React Dasar' },
+    { name: 'TypeScript Dasar' },
+    { name: 'Unix Command Line Dasar' },
+    { name: 'Web 101' },
+    { name: 'Golang Backend Development' },
+    { name: 'Golang Fudamental' },
+    { name: 'Backend Javascript' },
+    { name: 'Project Management Associate' },
+    { name: 'Android Development Associate' },
+    { name: 'Memulai Pemrograman dengan Dart' },
 ];
 
 
