@@ -32,7 +32,7 @@ export function DetailDialog({ content, onOpenChange }: DetailDialogProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[650px] bg-card">
+      <DialogContent className="sm:max-w-[650px] bg-card/80 backdrop-blur-sm">
         {content && (
           <>
             <DialogHeader>
@@ -41,7 +41,7 @@ export function DetailDialog({ content, onOpenChange }: DetailDialogProps) {
             </DialogHeader>
             <div className="grid gap-6 py-4">
               {content.image && (
-                <div className="relative w-full h-56 rounded-lg overflow-hidden">
+                <div className="relative w-full h-56 rounded-lg overflow-hidden border">
                     <Image 
                         src={content.image} 
                         alt={content.title}

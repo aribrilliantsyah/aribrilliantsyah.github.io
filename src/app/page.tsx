@@ -5,7 +5,8 @@ import type { FC } from 'react';
 import { Button } from '@/components/ui/button';
 import { InfoCard } from '@/components/info-card';
 import { DetailDialog } from '@/components/detail-dialog';
-import { Github, Linkedin, Mail, User, Code, Briefcase, Lightbulb, ExternalLink } from 'lucide-react';
+import { BentoCard, BentoGrid } from '@/components/bento-grid';
+import { Github, Linkedin, Mail, User, Code, Briefcase, Lightbulb, ExternalLink, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 interface Detail {
@@ -69,10 +70,77 @@ const experiences: Detail[] = [
     },
 ];
 
+const bentoItems = [
+    {
+        icon: User,
+        title: "About Me",
+        background: <Image src="https://placehold.co/600x400.png" alt="About me background" layout="fill" objectFit="cover" className="absolute -z-10 opacity-30" data-ai-hint="abstract geometric" />,
+        className: "col-span-12 lg:col-span-8",
+        content: (
+            <div className="space-y-4 text-base text-muted-foreground">
+                <p>
+                    I am a dedicated and results-driven developer with a strong foundation in backend technologies and a keen eye for frontend architecture. With several years of experience in the industry, I thrive on solving complex problems and building applications that are both efficient and user-friendly. 
+                </p>
+                <p>
+                    My journey in software development is fueled by a constant desire to learn and adapt to new technologies, ensuring that I can deliver modern and effective solutions.
+                </p>
+            </div>
+        )
+    },
+    {
+        icon: Lightbulb,
+        title: "Philosophy",
+        background: null,
+        className: "col-span-12 lg:col-span-4",
+        content: (
+            <blockquote className="relative h-full flex flex-col justify-center items-center">
+                <p className="text-xl md:text-2xl italic font-medium text-foreground text-center">
+                  "The best way to predict the future is to create it."
+                </p>
+                <footer className="mt-4 text-right text-sm text-muted-foreground w-full">- Peter Drucker</footer>
+            </blockquote>
+        )
+    },
+    {
+        icon: Briefcase,
+        title: "Work History",
+        background: null,
+        className: "col-span-12 lg:col-span-6",
+        content: (
+            <div className="space-y-4">
+                {experiences.slice(0, 2).map((exp, i) => (
+                    <div key={i}>
+                        <h3 className="font-semibold text-foreground">{exp.title}</h3>
+                        <p className="text-sm text-muted-foreground">{exp.description}</p>
+                    </div>
+                ))}
+                <a href="#experience" className="inline-flex items-center text-sm font-semibold text-primary hover:underline">
+                    View all experiences <ArrowRight className="ml-1 h-4 w-4" />
+                </a>
+            </div>
+        )
+    },
+    {
+        icon: Code,
+        title: "Featured Project",
+        background: <Image src="https://placehold.co/600x400.png" alt="Project background" layout="fill" objectFit="cover" className="absolute -z-10 opacity-30" data-ai-hint="code laptop" />,
+        className: "col-span-12 lg:col-span-6",
+        content: (
+            <div className="space-y-2">
+                <h3 className="font-semibold text-foreground">{projects[0].title}</h3>
+                <p className="text-sm text-muted-foreground">{projects[0].description}</p>
+                 <a href="#projects" className="inline-flex items-center text-sm font-semibold text-primary hover:underline">
+                    Explore more projects <ArrowRight className="ml-1 h-4 w-4" />
+                </a>
+            </div>
+        )
+    }
+];
+
 const Section: FC<{ id: string; title: string; icon: React.ReactNode; children: React.ReactNode; className?: string }> = ({ id, title, icon, children, className }) => (
   <section id={id} className={`w-full max-w-5xl mx-auto py-12 md:py-20 px-4 md:px-0 ${className}`}>
     <div className="flex items-center gap-3 mb-8">
-      <div className="flex items-center justify-center size-10 rounded-full bg-primary/20 text-primary-foreground">{icon}</div>
+      <div className="flex items-center justify-center size-10 rounded-full bg-primary/20 text-primary">{icon}</div>
       <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">{title}</h2>
     </div>
     {children}
@@ -105,7 +173,7 @@ export default function CodeFolioPage() {
                 <a href="#contact">
                   <Button variant="default">
                     Contact Me
-                    <Mail className="ml-2 h-4 w-4" />
+                    <Mail className="ml-2" />
                   </Button>
                 </a>
             </div>
@@ -114,47 +182,28 @@ export default function CodeFolioPage() {
 
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center bg-background overflow-hidden">
-          <div className="absolute inset-0 bg-grid-gray-200/40 dark:bg-grid-gray-800/40 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+        <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center animated-grid">
           <div className="z-10 px-4">
-            <h1 className="text-5xl md:text-7xl font-headline font-extrabold tracking-tight text-foreground">
+            <h1 className="text-5xl md:text-7xl font-headline font-extrabold tracking-tight text-foreground animate-fade-in-up">
               Ari Ardiansyah
             </h1>
-            <p className="mt-4 text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-4 text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
               Fullstack Developer / Backend Engineer
             </p>
-            <p className="mt-2 text-md md:text-lg text-muted-foreground/80 max-w-2xl mx-auto">
+            <p className="mt-2 text-md md:text-lg text-muted-foreground/80 max-w-2xl mx-auto animate-fade-in-up animation-delay-500">
               Crafting robust and scalable solutions with a passion for clean code.
             </p>
           </div>
         </section>
 
         {/* About Me Section */}
-        <Section id="about" title="About Me" icon={<User size={24} />}>
-            <div className="grid md:grid-cols-3 gap-8">
-                <div className="md:col-span-2 space-y-4 text-lg text-muted-foreground">
-                    <p>
-                        I am a dedicated and results-driven developer with a strong foundation in backend technologies and a keen eye for frontend architecture. With several years of experience in the industry, I thrive on solving complex problems and building applications that are both efficient and user-friendly. 
-                    </p>
-                    <p>
-                        My journey in software development is fueled by a constant desire to learn and adapt to new technologies, ensuring that I can deliver modern and effective solutions.
-                    </p>
-                    <div className="space-y-2 pt-4">
-                        <h3 className="text-xl font-headline font-semibold text-foreground">Education</h3>
-                        <p>Bachelor of Science in Computer Science - University of Technology (2014 - 2018)</p>
-                    </div>
-                </div>
-                <div className="flex items-center justify-center bg-accent/50 rounded-lg p-6">
-                  <blockquote className="relative">
-                    <Lightbulb className="absolute -top-4 -left-4 text-primary" size={32} />
-                    <p className="text-xl italic font-medium text-foreground">
-                      "The best way to predict the future is to create it."
-                    </p>
-                    <footer className="mt-2 text-right text-sm text-muted-foreground">- Peter Drucker</footer>
-                  </blockquote>
-                </div>
-            </div>
-        </Section>
+        <section id="about" className="w-full max-w-5xl mx-auto py-12 md:py-20 px-4 md:px-0">
+             <BentoGrid>
+                {bentoItems.map((item, i) => (
+                    <BentoCard key={i} {...item} />
+                ))}
+            </BentoGrid>
+        </section>
         
         {/* Projects Showcase */}
         <Section id="projects" title="Projects" icon={<Code size={24} />}>
@@ -184,24 +233,24 @@ export default function CodeFolioPage() {
         </Section>
         
         {/* Contact Information */}
-        <footer id="contact" className="bg-secondary">
+        <footer id="contact" className="bg-secondary/50">
           <Section id="contact-inner" title="Get In Touch" icon={<Mail size={24} />}>
             <p className="text-center text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.
             </p>
-            <div className="flex justify-center items-center gap-6">
-                <a href="mailto:ari.ardiansyah@example.com" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" size="lg" className="h-14 px-6 text-lg">
+            <div className="flex justify-center items-center gap-6 flex-wrap">
+                <a href="mailto:ari.ardiansyah.101@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="lg" className="h-14 px-6 text-lg bg-background/50 backdrop-blur-sm">
                         <Mail className="mr-3" /> Email
                     </Button>
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" size="lg" className="h-14 px-6 text-lg">
+                <a href="https://www.linkedin.com/in/ari-ardiansyah101" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="lg" className="h-14 px-6 text-lg bg-background/50 backdrop-blur-sm">
                         <Linkedin className="mr-3" /> LinkedIn
                     </Button>
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" size="lg" className="h-14 px-6 text-lg">
+                <a href="https://github.com/iAri" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="lg" className="h-14 px-6 text-lg bg-background/50 backdrop-blur-sm">
                         <Github className="mr-3" /> GitHub
                     </Button>
                 </a>

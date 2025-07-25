@@ -23,10 +23,12 @@ export function InfoCard({
   onClick,
   layout = 'vertical',
 }: InfoCardProps) {
+    const cardClasses = "w-full transition-all duration-300 ease-in-out hover:shadow-primary/20 hover:shadow-lg hover:-translate-y-1 cursor-pointer group bg-card overflow-hidden backdrop-blur-sm border-border/20 hover:border-border";
+
     if (layout === 'horizontal') {
         return (
             <Card
-                className="w-full transition-all duration-300 ease-in-out hover:shadow-primary/20 hover:shadow-lg hover:-translate-y-1 cursor-pointer group bg-card overflow-hidden"
+                className={cardClasses}
                 onClick={onClick}
             >
                 <div className="flex flex-col md:flex-row items-center">
@@ -64,7 +66,7 @@ export function InfoCard({
   
     return (
         <Card
-            className="w-full transition-all duration-300 ease-in-out hover:shadow-primary/20 hover:shadow-lg hover:-translate-y-2 cursor-pointer group flex flex-col bg-card overflow-hidden"
+            className={`${cardClasses} flex flex-col`}
             onClick={onClick}
         >
             {image && (
