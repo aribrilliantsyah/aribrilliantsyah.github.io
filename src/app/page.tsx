@@ -155,9 +155,6 @@ const topSkills = [
     { icon: Server, title: 'DevOps', description: 'Kubernetes, Docker, CI/CD' },
     { icon: Layers, title: 'Full Stack', description: 'End-to-end development' },
     { icon: Bot, title: 'Laravel', description: 'PHP Framework' },
-    { icon: Bot, title: 'CodeIgniter 3', description: 'PHP Framework' },
-    { icon: Smartphone, title: 'Java Android', description: 'Native Android Dev' },
-    { icon: Smartphone, title: 'Flutter', description: 'Cross-platform Mobile' },
 ];
 
 const GridCard: FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
@@ -246,7 +243,7 @@ export default function CodeFolioPage() {
              <GridCard className="col-span-1 lg:col-span-2 row-span-3">
                  <div className="relative w-full h-full rounded-md overflow-hidden">
                     <Image
-                        src="https://images.unsplash.com/photo-1517547102324-4e7e99e0b8a4?q=80&w=1964"
+                        src="https://images.unsplash.com/photo-1611638281871-1063d3e76e1f?q=80&w=1964"
                         alt="Portfolio image"
                         layout="fill"
                         objectFit="cover"
@@ -332,11 +329,11 @@ export default function CodeFolioPage() {
                  <SectionTitle title="Top Skills"/>
                  <div className="grid grid-cols-3 gap-4 h-full content-center">
                     {topSkills.map((skill, i) => (
-                        <div key={i} className="flex items-center gap-3 p-2 rounded-md bg-secondary/50">
+                        <div key={i} className="flex flex-col items-center justify-center text-center gap-2 p-2 rounded-md bg-secondary/50">
                             <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
                                 <skill.icon size={20}/>
                             </div>
-                            <div>
+                            <div className="flex flex-col items-center">
                                 <h3 className="font-medium text-sm text-foreground">{skill.title}</h3>
                                 <p className="text-xs text-muted-foreground">{skill.description}</p>
                             </div>
@@ -377,5 +374,3 @@ export default function CodeFolioPage() {
     </div>
   );
 }
-
-    
