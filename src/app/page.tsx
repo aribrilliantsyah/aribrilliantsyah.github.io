@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart } from 'lucide-react';
 import Image from 'next/image';
 import { Clock } from '@/components/clock';
 import { cn } from '@/lib/utils';
@@ -149,7 +149,7 @@ const socialLinks = [
 ];
 
 const GridCard: FC<{ children: React.ReactNode; className?: string, title?: string }> = ({ children, className, title }) => (
-    <Card className={cn("p-4 md:p-6 border border-border/50 rounded-lg flex flex-col", className)}>
+    <Card className={cn("p-4 md:p-6 border border-border/50 rounded-lg flex flex-col shadow-sm", className)}>
       {title && (
           <h2 className="text-sm font-normal text-muted-foreground mb-4">{title}</h2>
       )}
@@ -180,11 +180,22 @@ export default function CodeFolioPage() {
     }, []);
 
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-background min-h-screen text-foreground">
       <div className="max-w-screen-xl mx-auto p-4 md:p-8">
-        
+        <header className="flex justify-between items-center mb-8">
+            <div className="flex items-center gap-4">
+                <Image src="https://placehold.co/40x40.png" alt="Ari Ardiansyah" width={40} height={40} className="rounded-full" data-ai-hint="profile picture" />
+                <h1 className="text-xl font-bold font-headline">Ari Ardiansyah</h1>
+            </div>
+            <a href="mailto:ari.ardiansyah.101@gmail.com">
+                <Button variant="outline">
+                    Contact Me <ArrowUpRight className="ml-2" />
+                </Button>
+            </a>
+        </header>
+
         <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          
+            
             <GridCard className="lg:col-span-2">
                 <SectionTitle title="About"/>
                  <p className="text-sm text-foreground/90">
@@ -232,7 +243,7 @@ export default function CodeFolioPage() {
                         alt="Portfolio image"
                         layout="fill"
                         objectFit="cover"
-                        data-ai-hint="sunset landscape"
+                        data-ai-hint="abstract texture"
                     />
                  </div>
             </GridCard>
@@ -332,8 +343,12 @@ export default function CodeFolioPage() {
             </GridCard>
         </main>
         
-        <footer className="text-center mt-8 text-xs text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Ari Ardiansyah. Crafted with Next.js</p>
+        <footer className="flex justify-between items-center mt-8 text-xs text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} Ari Ardiansyah.</p>
+          <div className="flex items-center gap-1">
+            <p>Crafted with</p>
+            <Heart size={14} className="text-red-500" />
+          </div>
         </footer>
       </div>
     </div>
