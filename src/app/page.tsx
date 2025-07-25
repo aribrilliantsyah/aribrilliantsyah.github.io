@@ -249,9 +249,9 @@ const bentoItems = [
 ];
 
 const Section: FC<{ id: string; title: string; icon: React.ReactNode; children: React.ReactNode; className?: string }> = ({ id, title, icon, children, className }) => (
-  <section id={id} className={`w-full max-w-5xl mx-auto py-12 md:py-20 px-4 md:px-0 ${className}`}>
+  <section id={id} className={`w-full max-w-6xl mx-auto py-12 md:py-20 px-4 md:px-0 ${className}`}>
     <div className="flex items-center gap-4 mb-8">
-      <div className="flex items-center justify-center size-12 rounded-md bg-secondary text-foreground border-2 neo-shadow-sm">{icon}</div>
+      <div className="flex items-center justify-center size-12 rounded-lg bg-primary text-primary-foreground">{icon}</div>
       <h2 className="text-3xl md:text-4xl font-headline font-bold text-foreground">{title}</h2>
     </div>
     {children}
@@ -268,7 +268,7 @@ export default function CodeFolioPage() {
 
   return (
     <div className="bg-background min-h-screen text-foreground">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b-2">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
@@ -279,6 +279,7 @@ export default function CodeFolioPage() {
                         <a href="#about" className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
                         <a href="#projects" className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
                         <a href="#experience" className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+                         <a href="#certifications" className="text-muted-foreground hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors">Certifications</a>
                     </div>
                 </div>
                 <a href="#contact">
@@ -299,16 +300,16 @@ export default function CodeFolioPage() {
               Ari Ardiansyah
             </h1>
             <p className="mt-4 text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up animation-delay-300">
-              Project Lead Developer | Full Stack Developer
+              Project Lead Developer & Full Stack Developer
             </p>
             <p className="mt-2 text-md md:text-lg text-muted-foreground/80 max-w-3xl mx-auto animate-fade-in-up animation-delay-500">
-              Crafting scalable and innovative solutions with modern technologies like Go, Spring Boot, and Kubernetes.
+              Crafting scalable and innovative solutions with Go, Spring Boot, and Kubernetes.
             </p>
           </div>
         </section>
 
         {/* About Me Section */}
-        <section id="about" className="w-full max-w-5xl mx-auto py-12 md:py-20 px-4 md:px-0">
+        <section id="about" className="w-full max-w-6xl mx-auto py-12 md:py-20 px-4 md:px-0">
              <BentoGrid>
                 {bentoItems.map((item, i) => (
                     <BentoCard key={i} {...item} />
@@ -347,7 +348,7 @@ export default function CodeFolioPage() {
         <Section id="certifications" title="Certifications" icon={<Award size={24} />}>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
                 {certifications.map((cert, index) => (
-                    <div key={index} className="bg-card p-4 rounded-lg border-2 neo-shadow flex items-center justify-center">
+                    <div key={index} className="bg-card p-4 rounded-lg border shadow-sm flex items-center justify-center">
                         <p className="font-medium text-foreground">{cert.name}</p>
                     </div>
                 ))}

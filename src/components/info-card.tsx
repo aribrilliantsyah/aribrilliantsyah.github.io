@@ -24,7 +24,7 @@ export function InfoCard({
   onClick,
   layout = 'vertical',
 }: InfoCardProps) {
-    const cardClasses = "w-full cursor-pointer group bg-card overflow-hidden border-2 rounded-lg neo-shadow transition-transform-shadow hover-lift";
+    const cardClasses = "w-full cursor-pointer group bg-card overflow-hidden border rounded-xl shadow-sm transition-shadow hover:shadow-lg";
 
     if (layout === 'horizontal') {
         return (
@@ -34,7 +34,7 @@ export function InfoCard({
             >
                 <div className="flex flex-col md:flex-row items-center">
                     {image && (
-                         <div className="w-full md:w-1/3 h-48 md:h-full relative overflow-hidden rounded-l-md border-r-2">
+                         <div className="w-full md:w-1/3 h-48 md:h-full relative overflow-hidden flex-shrink-0">
                             <Image
                                 src={image}
                                 alt={title}
@@ -71,7 +71,7 @@ export function InfoCard({
             onClick={onClick}
         >
             {image && (
-                <div className="w-full h-48 relative overflow-hidden border-b-2">
+                <div className="w-full h-48 relative overflow-hidden border-b">
                     <Image
                         src={image}
                         alt={title}
@@ -90,7 +90,7 @@ export function InfoCard({
                 <CardContent className="p-0 mt-4 flex-grow flex items-end">
                     <div className="flex flex-wrap gap-2">
                         {tags.map((tag) => (
-                            <Badge key={tag} variant="secondary" className="border-2 neo-shadow-sm">
+                            <Badge key={tag} variant="secondary">
                                 {tag}
                             </Badge>
                         ))}
