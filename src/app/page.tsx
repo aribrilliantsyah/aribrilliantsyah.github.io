@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -209,7 +210,7 @@ export default function CodeFolioPage() {
             
             <GridCard className="lg:col-span-2">
                 <SectionTitle title="About"/>
-                 <p className="text-sm text-foreground/90">
+                 <p className="text-sm text-foreground/90 text-justify">
                     With over 7 years of dedicated experience in the IT industry, I am a results-oriented developer with a proven career track record, advancing from a Junior Developer to a Project Lead. I specialize in building robust and scalable applications, leveraging modern technologies like Spring Boot, Kubernetes, and Go. My journey reflects a commitment to continuous learning, collaboration, and delivering high-quality digital solutions.
                 </p>
             </GridCard>
@@ -247,7 +248,7 @@ export default function CodeFolioPage() {
                  </ScrollArea>
             </GridCard>
 
-             <GridCard className="col-span-1 lg:col-span-2 row-span-3 !p-0">
+             <GridCard className="col-span-1 lg:col-span-2 row-span-3">
                  <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
                         src="https://images.unsplash.com/photo-1611638281871-1063d3e76e1f?q=80&w=1964"
@@ -336,8 +337,8 @@ export default function CodeFolioPage() {
                 <SectionTitle title="Top Skills"/>
                  <div className="grid grid-cols-2 grid-rows-3 gap-x-4 gap-y-4 h-full">
                     {topSkills.map((skill, i) => (
-                        <div key={i} className="flex items-start gap-4 p-2 rounded-md bg-secondary/50">
-                            <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0 mt-1">
+                         <div key={i} className="flex items-center gap-4 p-2 rounded-md bg-secondary/50">
+                            <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
                                 <skill.icon size={20}/>
                             </div>
                             <div className="flex-1">
@@ -355,21 +356,24 @@ export default function CodeFolioPage() {
                  <ScrollArea className="h-full pr-3 -mr-3">
                     <div className="space-y-4">
                          {education.sort((a, b) => {
-                            const aYear = parseInt(a.date.split(' - ')[0]);
-                            const bYear = parseInt(b.date.split(' - ')[0]);
-                            if (!isNaN(aYear) && !isNaN(bYear)) {
-                                return bYear - aYear;
-                            }
-                             // Handle cases like "Feb - Jul 2022"
-                            const aDate = new Date(a.date.split(' - ')[1]);
-                            const bDate = new Date(b.date.split(' - ')[1]);
-
-                            if(!isNaN(aDate.getTime()) && !isNaN(bDate.getTime())) {
-                                return bDate.getTime() - aDate.getTime();
-                            }
-                            
                             if (a.date.includes('Present')) return -1;
                             if (b.date.includes('Present')) return 1;
+
+                            const aYear = parseInt(a.date.split(' - ')[0]);
+                            const bYear = parseInt(b.date.split(' - ')[0]);
+
+                            if (!isNaN(aYear) && !isNaN(bYear)) {
+                                if (aYear !== bYear) return bYear - aYear;
+                            }
+                            
+                            const aDateMatch = a.date.match(/\d{4}/g);
+                            const bDateMatch = b.date.match(/\d{4}/g);
+
+                            const aEndDate = aDateMatch ? parseInt(aDateMatch[aDateMatch.length - 1]) : 0;
+                            const bEndDate = bDateMatch ? parseInt(bDateMatch[bDateMatch.length - 1]) : 0;
+
+                            if(aEndDate !== bEndDate) return bEndDate - aEndDate;
+
                             return 0;
                         }).map((edu, i) => (
                              <div key={i} className="flex items-start gap-4">
@@ -398,4 +402,5 @@ export default function CodeFolioPage() {
       </div>
     </div>
   );
-}
+
+    
