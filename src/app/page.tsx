@@ -241,7 +241,7 @@ export default function CodeFolioPage() {
              <GridCard className="col-span-1 lg:col-span-2 row-span-3">
                  <div className="relative w-full h-full rounded-md overflow-hidden">
                     <Image
-                        src="https://images.unsplash.com/photo-1531635050085-3002638426d0?q=80&w=1964"
+                        src="https://images.unsplash.com/photo-1542296332-9a572a15423d?q=80&w=1964"
                         alt="Portfolio image"
                         layout="fill"
                         objectFit="cover"
@@ -252,15 +252,15 @@ export default function CodeFolioPage() {
             
             <GridCard>
                  <SectionTitle title="Time"/>
-                 <div className="flex items-center gap-3">
+                 <div className="flex items-center justify-center h-full">
                     {time ? (
-                        <>
+                        <div className="flex items-center gap-3">
                             <Clock time={time} className="size-12" />
                             <div>
                                 <p className="text-xl font-semibold">{time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })}</p>
                                 <p className="text-xs text-muted-foreground">Bandung, ID</p>
                             </div>
-                        </>
+                        </div>
                     ) : (
                          <div className="flex items-center gap-3">
                             <div className="size-12 rounded-full bg-secondary animate-pulse" />
