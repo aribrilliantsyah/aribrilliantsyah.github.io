@@ -160,7 +160,7 @@ const GridCard: FC<{ children: React.ReactNode; className?: string, title?: stri
       {title && (
           <h2 className="text-sm font-normal text-muted-foreground mb-4">{title}</h2>
       )}
-      <div className="flex-grow">
+      <div className="flex-grow flex flex-col">
           {children}
       </div>
     </Card>
@@ -280,7 +280,7 @@ export default function CodeFolioPage() {
 
             <GridCard>
                  <SectionTitle title="Social Media"/>
-                 <div className="flex items-center gap-2 h-full">
+                 <div className="flex items-center justify-center h-full gap-2">
                     {socialLinks.map((link, i) => (
                         <a key={i} href={link.href} target="_blank" rel="noopener noreferrer" className="flex-1">
                             <Button variant="outline" size="icon" className="w-full h-12 rounded-full">
@@ -314,7 +314,6 @@ export default function CodeFolioPage() {
             </GridCard>
             
             <GridCard>
-                 <SectionTitle title="Years of Experience"/>
                  <div className="flex flex-col items-center justify-center h-full text-center">
                     <p className="text-6xl font-bold text-foreground">{yearsOfExperience}+</p>
                     <p className="text-xs text-muted-foreground mt-1">Years of professional experience</p>
@@ -322,7 +321,6 @@ export default function CodeFolioPage() {
             </GridCard>
             
             <GridCard>
-                <SectionTitle title="Quote"/>
                  <div className="flex flex-col items-center justify-center h-full text-center">
                     <Quote className="size-8 text-muted-foreground mb-2" />
                     <p className="text-sm italic text-foreground/80">"Stay hungry, stay foolish."</p>
@@ -332,10 +330,10 @@ export default function CodeFolioPage() {
 
              <GridCard className="lg:col-span-2">
                  <SectionTitle title="Top Skills"/>
-                 <div className="grid grid-cols-2 gap-4 h-full">
+                 <div className="grid grid-cols-2 gap-4 h-full content-center">
                     {topSkills.map((skill, i) => (
                         <div key={i} className="flex items-center gap-4 p-2 rounded-md bg-secondary/50">
-                            <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground">
+                            <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
                                 <skill.icon size={20}/>
                             </div>
                             <div>
