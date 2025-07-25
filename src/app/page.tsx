@@ -256,11 +256,11 @@ export default function CodeFolioPage() {
              <GridCard className="col-span-1 lg:col-span-2 row-span-3 !p-0 min-h-[300px]">
                  <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
-                        src="https://images.unsplash.com/photo-1502933691298-8924a741e1ee"
+                        src="https://images.unsplash.com/photo-1611638281871-1063d3e76e1f"
                         alt="Portfolio image"
                         layout="fill"
                         objectFit="cover"
-                        data-ai-hint="nature landscape"
+                        data-ai-hint="workspace desk"
                     />
                  </div>
             </GridCard>
@@ -400,5 +400,7 @@ export default function CodeFolioPage() {
       </div>
     </div>
   );
+
+    
 
     
