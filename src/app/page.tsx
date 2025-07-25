@@ -169,16 +169,14 @@ export default function CodeFolioPage() {
     const [yearsOfExperience, setYearsOfExperience] = useState<string>('0');
 
     useEffect(() => {
-        const update = () => setTime(new Date());
-        update();
-        const timer = setInterval(update, 1000 * 60); // Update every minute
-        
+        const timerId = setInterval(() => setTime(new Date()), 1000);
+
         const startDate = new Date(2018, 5, 1); // June 2018
         const currentDate = new Date();
         const diff = (currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
         setYearsOfExperience(diff.toFixed(1));
-
-        return () => clearInterval(timer);
+        
+        return () => clearInterval(timerId);
     }, []);
 
   return (
@@ -275,7 +273,7 @@ export default function CodeFolioPage() {
                 <SectionTitle title="Experience"/>
                 <ScrollArea className="h-[260px] pr-3 -mr-3">
                     <div className="space-y-6">
-                        <div className="relative space-y-4 before:absolute before:inset-y-0 before:w-0.5 before:bg-border before:left-5">
+                        <div className="relative space-y-6 before:absolute before:inset-y-0 before:w-0.5 before:bg-border before:left-5">
                             {experiences.map((exp, i) => (
                                 <div key={i} className="flex items-start gap-4 pl-10 relative">
                                     <div className="absolute left-0 top-0.5 mt-px size-10 rounded-full bg-secondary flex items-center justify-center border">
@@ -300,12 +298,12 @@ export default function CodeFolioPage() {
                  </div>
             </GridCard>
 
-             <GridCard>
+             <GridCard className="lg:col-span-2">
                 <SectionTitle title="Education"/>
-                 <ScrollArea className="h-[120px] pr-3 -mr-3">
+                 <ScrollArea className="h-full pr-3 -mr-3">
                     <div className="space-y-4">
                         {education.map((edu, i) => (
-                             <div key={i} className="flex items-start gap-3">
+                             <div key={i} className="flex items-start gap-4">
                                 <div className="size-10 rounded-full bg-secondary flex items-center justify-center border flex-shrink-0">
                                      <GraduationCap size={18} className="text-muted-foreground"/>
                                 </div>
