@@ -1,17 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
-export const Clock = ({ className }: { className?: string }) => {
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(timerId);
-  }, []);
-
+export const Clock = ({ className, time }: { className?: string, time: Date }) => {
   const hours = time.getHours();
   const minutes = time.getMinutes();
   const seconds = time.getSeconds();
