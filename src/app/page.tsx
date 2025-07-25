@@ -21,36 +21,78 @@ import {
 
 
 const projects = [
-  {
-    title: 'Digdaya BPD DIY',
-    description: 'Intermediary payment system for village finances.',
-    tags: ['Spring Boot', 'Laravel', 'Kubernetes'],
-    longDescription: "Developed an intermediary payment system that bridges village financial systems (Siskeudes Link) with BPD DIY bank's payment gateway. The system manages receipt payments and tax transactions efficiently.",
-  },
-  {
-    title: 'Raharjo BPD DIY',
-    description: 'QR-based non-cash social assistance application.',
-    tags: ['Spring Boot', 'Kotlin'],
-    longDescription: "Designed and implemented a QR-based non-cash social assistance distribution system integrated with BPD DIY Bank's virtual account system. This solution streamlined the distribution of social aid to beneficiaries.",
-  },
-  {
-    title: 'Virtual Account System BPD DIY',
-    description: 'Comprehensive virtual account management system.',
-    tags: ['Kubernetes', 'Spring Boot', 'Laravel'],
-    longDescription: "Led the development of a comprehensive virtual account management system for BPD DIY Bank, featuring virtual account creation, child account generation, disbursement, cash-pooling, and multi-channel payment gateway integration (ATM, Teller, EDC, M-Banking, etc.).",
-  },
-  {
-    title: 'BINUS SCHOOL Entrance Test Platform',
-    description: 'Online test platform for BINUS new student admissions.',
-    tags: ['React.js', 'TypeScript', 'Vite'],
-    longDescription: "Contributed to developing an online Potential Study Success Test (TPKS) platform for BINUS UNIVERSITY student admissions, ensuring a smooth and user-friendly testing experience.",
-  },
-  {
-    title: 'Owapi',
-    description: 'WhatsApp management system with bot and live agent.',
-    tags: ['CodeIgniter', 'Node.js', 'Socket.io'],
-    longDescription: "Developed a WhatsApp management system using the ValueFirst Business Platform API, featuring bulk messaging, chatbot functionality, live agent integration, and OTP message handling.",
-  },
+    {
+        title: 'Digdaya BPD DIY',
+        description: 'Intermediary payment system for village finances.',
+        tags: ['Spring Boot', 'Laravel', 'Kubernetes'],
+        longDescription: "Developed an intermediary payment system that bridges village financial systems (Siskeudes Link) with BPD DIY bank's payment gateway. The system manages receipt payments and tax transactions efficiently.",
+    },
+    {
+        title: 'Raharjo BPD DIY',
+        description: 'QR-based non-cash social assistance application.',
+        tags: ['Spring Boot', 'Kotlin'],
+        longDescription: "Designed and implemented a QR-based non-cash social assistance distribution system integrated with BPD DIY Bank's virtual account system. This solution streamlined the distribution of social aid to beneficiaries.",
+    },
+    {
+        title: 'Virtual Account System BPD DIY',
+        description: 'Comprehensive virtual account management system.',
+        tags: ['Kubernetes', 'Spring Boot', 'Laravel'],
+        longDescription: "Led the development of a comprehensive virtual account management system for BPD DIY Bank, featuring virtual account creation, child account generation, disbursement, cash-pooling, and multi-channel payment gateway integration (ATM, Teller, EDC, M-Banking, etc.).",
+    },
+    {
+        title: 'BINUS SCHOOL Entrance Test Platform',
+        description: 'Online test platform for BINUS new student admissions.',
+        tags: ['React.js', 'TypeScript', 'Vite'],
+        longDescription: "Contributed to developing an online Potential Study Success Test (TPKS) platform for BINUS UNIVERSITY student admissions, ensuring a smooth and user-friendly testing experience.",
+    },
+    {
+        title: 'Owapi',
+        description: 'WhatsApp management system with bot and live agent.',
+        tags: ['CodeIgniter', 'Node.js', 'Socket.io'],
+        longDescription: "Developed a WhatsApp management system using the ValueFirst Business Platform API, featuring bulk messaging, chatbot functionality, live agent integration, and OTP message handling.",
+    },
+    {
+      title: 'BPR Academy Perbarindo',
+      description: 'Certification event management system for BPR members.',
+      tags: ['Vue.js', 'Pinia', 'CodeIgniter'],
+      longDescription: 'Built a complete certification event management system for Perbarindo BPR members, handling everything from learning materials to facilitator management.',
+    },
+    {
+      title: 'Jeera Back Office',
+      description: 'A complete back-office management system.',
+      tags: ['CodeIgniter', 'jQuery'],
+      longDescription: 'Created a complete back office management system including inventory management, supplier management, sales tracking, POS registration, income and expense tracking, and an integrated accounting system.',
+    },
+    {
+      title: 'Sistem Informasi Perbarindo (SIP)',
+      description: 'A comprehensive management information system.',
+      tags: ['CodeIgniter'],
+      longDescription: 'Developed a comprehensive management system including member management, a bandwidth sharing payment system with E-KTP Reader, event management, GCG report management, and BPR membership and certification management.',
+    },
+    {
+      title: 'Harapan Amal Mulia',
+      description: 'Donation website for a foundation.',
+      tags: ['Laravel'],
+      longDescription: 'Created a donation website integrated with a payment gateway and WhatsApp API for the Harapan Amal Mulia foundation.',
+    },
+    {
+      title: 'Digital Web Branch - BPR Nusamba Cepiring',
+      description: 'Web-based customer acquisition system.',
+      tags: ['CodeIgniter'],
+      longDescription: 'Developed a web-based customer acquisition system managing the entire process from initial application to Account Officer meetings and final customer registration.',
+    },
+    {
+      title: 'Koperasi DIY',
+      description: 'Cooperative management system.',
+      tags: ['CodeIgniter'],
+      longDescription: 'Developed a cooperative management system featuring member management, deposit and withdrawal processing, rental management, loan and savings management, and an integrated accounting module.',
+    },
+    {
+      title: 'School Management and Payment System',
+      description: 'Comprehensive school management system.',
+      tags: ['CodeIgniter'],
+      longDescription: 'Developed a comprehensive school management system with integrated accounting features.',
+    },
 ];
 
 
@@ -233,14 +275,17 @@ export default function CodeFolioPage() {
                 <SectionTitle title="Experience"/>
                 <ScrollArea className="h-[260px] pr-3 -mr-3">
                     <div className="space-y-6">
-                        <div className="space-y-4">
+                        <div className="relative space-y-4 before:absolute before:inset-y-0 before:w-0.5 before:bg-border before:left-5">
                             {experiences.map((exp, i) => (
-                                <div key={i}>
-                                    <div className="flex justify-between items-center">
-                                        <p className="text-sm font-medium">{exp.title}</p>
-                                        <p className="text-xs text-muted-foreground">{exp.date}</p>
+                                <div key={i} className="flex items-start gap-4 pl-10 relative">
+                                    <div className="absolute left-0 top-0.5 mt-px size-10 rounded-full bg-secondary flex items-center justify-center border">
+                                       <Briefcase size={18} className="text-muted-foreground"/>
                                     </div>
-                                    <p className="text-xs text-muted-foreground">{exp.company}</p>
+                                    <div>
+                                        <p className="text-xs text-muted-foreground">{exp.date}</p>
+                                        <p className="text-sm font-medium">{exp.title}</p>
+                                        <p className="text-xs text-muted-foreground">{exp.company}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -260,12 +305,15 @@ export default function CodeFolioPage() {
                  <ScrollArea className="h-[120px] pr-3 -mr-3">
                     <div className="space-y-4">
                         {education.map((edu, i) => (
-                             <div key={i}>
-                                <div className="flex justify-between items-center">
+                             <div key={i} className="flex items-start gap-3">
+                                <div className="size-10 rounded-full bg-secondary flex items-center justify-center border flex-shrink-0">
+                                     <GraduationCap size={18} className="text-muted-foreground"/>
+                                </div>
+                                <div>
                                     <p className="text-sm font-medium">{edu.institution}</p>
+                                    <p className="text-xs text-muted-foreground">{edu.degree}</p>
                                     <p className="text-xs text-muted-foreground">{edu.date}</p>
                                 </div>
-                                <p className="text-xs text-muted-foreground">{edu.degree}</p>
                             </div>
                         ))}
                     </div>
@@ -292,5 +340,4 @@ export default function CodeFolioPage() {
       </div>
     </div>
   );
-
-    
+}
