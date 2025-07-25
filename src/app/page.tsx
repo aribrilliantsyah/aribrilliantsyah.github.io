@@ -20,35 +20,78 @@ interface Detail {
 }
 
 const projects: Detail[] = [
-  {
-    title: 'Enterprise Application with Spring Boot',
-    description: 'Developing scalable and robust enterprise-level applications.',
-    tags: ['Spring Boot', 'Java', 'Microservices', 'API Design'],
-    longDescription:
-      'Led the design and development of enterprise applications using Spring Boot. Focused on creating scalable microservices architecture, ensuring high performance, and maintaining robust security protocols. Responsible for the full development lifecycle, from conception to deployment.',
-    image: 'https://placehold.co/600x400.png',
-    imageHint: 'api code',
-    link: 'https://github.com/iAri'
-  },
-  {
-    title: 'Kubernetes Container Orchestration',
-    description: 'Managing and scaling containerized applications with Kubernetes.',
-    tags: ['Kubernetes', 'DevOps', 'Go', 'Containerization', 'CI/CD'],
-    longDescription:
-      'Implemented and managed container orchestration using Kubernetes for various projects. Focused on automating deployment, scaling, and operations of application containers across clusters of hosts. Improved system reliability and deployment efficiency significantly.',
-    image: 'https://placehold.co/600x400.png',
-    imageHint: 'kubernetes server',
-  },
-  {
-    title: 'Backend Development with Go',
-    description: 'Building high-performance backend services using Go.',
-    tags: ['Go', 'Backend', 'Performance', 'API'],
-    longDescription:
-      'Developed high-performance backend services and APIs using the Go programming language. Leveraged Go\'s concurrency model to build efficient, scalable, and easy-to-maintain systems for high-traffic applications.',
-    image: 'https://placehold.co/600x400.png',
-    imageHint: 'modern code',
-    link: 'https://github.com/iAri'
-  },
+    {
+        title: 'Digdaya BPD DIY',
+        description: 'Intermediary payment system for village finances.',
+        tags: ['Spring Boot', 'Laravel', 'Kubernetes'],
+        longDescription: 'Developed an intermediary payment system that bridges village financial systems (Siskeudes Link) with BPD DIY bank\'s payment gateway. The system manages receipt payments and tax transactions efficiently.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'financial system',
+    },
+    {
+        title: 'Raharjo BPD DIY (Aplikasi Bansos Non-Tunai)',
+        description: 'QR-based social assistance distribution system.',
+        tags: ['Spring Boot', 'Kotlin'],
+        longDescription: 'Designed and implemented a QR-based non-cash social assistance distribution system integrated with BPD DIY Bank\'s virtual account system. This solution streamlined the distribution of social aid to beneficiaries.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'mobile banking',
+    },
+    {
+        title: 'Virtual Account System BPD DIY',
+        description: 'Comprehensive virtual account management system.',
+        tags: ['Kubernetes', 'Spring Boot', 'Laravel'],
+        longDescription: 'Led the development of a comprehensive virtual account management system for BPD DIY Bank featuring: Virtual account creation and management, child account generation, disbursement and cashpooling capabilities, payment gateway integration, and multi-channel integration (ATM, Teller, EDC, M-Banking, Internet Banking, CMS).',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'digital account',
+    },
+    {
+        title: 'BINUS SCHOOL Entrance Test Platform',
+        description: 'Online Potential Study Success Test (TPKS) platform.',
+        tags: ['React.js', 'TypeScript', 'Vite'],
+        longDescription: 'Contributed to developing an online Potential Study Success Test (TPKS) platform for BINUS UNIVERSITY student admissions, ensuring a smooth and user-friendly testing experience.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'online education',
+    },
+    {
+        title: 'Owapi',
+        description: 'WhatsApp management system with bots and live agents.',
+        tags: ['CodeIgniter', 'Node.js', 'Socket.io'],
+        longDescription: 'Developed a WhatsApp management system implementing ValueFirst\'s WhatsApp Business Platform API, featuring: Bulk messaging, chatbot functionality, live agent integration, and OTP message handling.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'chat application',
+    },
+    {
+        title: 'BPR Academy Perbarindo',
+        description: 'Certification event management for Perbarindo BPR.',
+        tags: ['Vue.js', 'Pinia', 'CodeIgniter'],
+        longDescription: 'Built a complete certification event management system for Perbarindo BPR members, handling everything from learning materials to facilitator management.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'online learning',
+    },
+    {
+        title: 'Jeera Back Office',
+        description: 'Complete back-office management system.',
+        tags: ['CodeIgniter', 'jQuery'],
+        longDescription: 'Created a complete back office management system including: Inventory management, supplier management, sales tracking, POS registration, income and expense tracking, and an integrated accounting system.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'business dashboard',
+    },
+    {
+        title: 'Sistem Informasi Perbarindo (SIP)',
+        description: 'Comprehensive management system for Perbarindo.',
+        tags: ['CodeIgniter'],
+        longDescription: 'Developed a comprehensive management system including: Member management, Bandwidth Sharing payment system with E-KTP Reader, event management (including National Working Meeting), GCG report management, and BPR membership and certification management.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'management system',
+    },
+    {
+        title: 'Harapan Amal Mulia',
+        description: 'Donation website with payment gateway integration.',
+        tags: ['Laravel'],
+        longDescription: 'Created a donation website integrated with payment gateway and WhatsApp API for Harapan Amal Mulia foundation.',
+        image: 'https://placehold.co/600x400.png',
+        imageHint: 'charity donation',
+    },
 ];
 
 const experiences: Detail[] = [
@@ -181,8 +224,8 @@ export default function CodeFolioPage() {
   };
 
   return (
-    <div className="bg-background min-h-screen text-text-light dark:text-text-dark">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-bg-light/80 dark:bg-bg-dark/80 backdrop-blur-sm">
+    <div className="bg-background min-h-screen text-foreground">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
