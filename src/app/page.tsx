@@ -240,8 +240,8 @@ export default function CodeFolioPage() {
                  </ScrollArea>
             </GridCard>
 
-             <GridCard className="col-span-1 lg:col-span-2 row-span-3">
-                 <div className="relative w-full h-full rounded-md overflow-hidden">
+             <GridCard className="col-span-1 lg:col-span-2 row-span-3 !p-0">
+                 <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
                         src="https://images.unsplash.com/photo-1611638281871-1063d3e76e1f?q=80&w=1964"
                         alt="Portfolio image"
@@ -327,7 +327,7 @@ export default function CodeFolioPage() {
 
             <GridCard className="lg:col-span-2">
                 <SectionTitle title="Top Skills"/>
-                <div className="grid grid-cols-2 gap-4 h-full content-center">
+                <div className="grid grid-cols-2 grid-rows-3 gap-4 h-full">
                 {topSkills.map((skill, i) => (
                     <div key={i} className="flex items-center gap-4 p-2 rounded-md bg-secondary/50">
                         <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
@@ -347,7 +347,16 @@ export default function CodeFolioPage() {
                 <SectionTitle title="Education"/>
                  <ScrollArea className="h-full pr-3 -mr-3">
                     <div className="space-y-4">
-                        {education.sort((a, b) => parseInt(b.date.split(' - ')[0]) - parseInt(a.date.split(' - ')[0])).map((edu, i) => (
+                        {education.sort((a, b) => {
+                            const aYear = parseInt(a.date.split(' - ')[0]);
+                            const bYear = parseInt(b.date.split(' - ')[0]);
+                            if (!isNaN(aYear) && !isNaN(bYear)) {
+                                return bYear - aYear;
+                            }
+                            if (a.date.includes('Present')) return -1;
+                            if (b.date.includes('Present')) return 1;
+                            return 0;
+                        }).map((edu, i) => (
                              <div key={i} className="flex items-start gap-4">
                                 <div className="size-10 rounded-full bg-secondary flex items-center justify-center border flex-shrink-0">
                                      <GraduationCap size={18} className="text-muted-foreground"/>
@@ -375,3 +384,5 @@ export default function CodeFolioPage() {
     </div>
   );
 }
+
+    
