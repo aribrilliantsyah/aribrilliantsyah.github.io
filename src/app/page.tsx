@@ -131,16 +131,16 @@ const education = [
         degree: 'Bachelor of Informatics Engineering'
     },
     {
-        date: '2015 - 2018',
-        institution: 'SMK Assalaam Bandung',
-        degree: 'Software Engineering'
-    },
-     {
         date: 'Feb - Jul 2022',
         institution: 'Binar Academy',
         degree: 'Backend Javascript Bootcamp'
+    },
+    {
+        date: '2015 - 2018',
+        institution: 'SMK Assalaam Bandung',
+        degree: 'Software Engineering'
     }
-]
+];
 
 const socialLinks = [
   { icon: Linkedin, href: 'https://www.linkedin.com/in/ari-ardiansyah101' },
@@ -327,7 +327,7 @@ export default function CodeFolioPage() {
 
              <GridCard className="lg:col-span-2">
                  <SectionTitle title="Top Skills"/>
-                 <div className="grid grid-cols-3 gap-4 h-full content-center">
+                 <div className="grid grid-cols-2 gap-4 h-full content-center">
                     {topSkills.map((skill, i) => (
                         <div key={i} className="flex flex-col items-center justify-center text-center gap-2 p-2 rounded-md bg-secondary/50">
                             <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
@@ -374,5 +374,3 @@ export default function CodeFolioPage() {
     </div>
   );
 }
-
-    
