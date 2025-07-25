@@ -4,48 +4,65 @@
 
 @layer base {
   :root {
-    --background: 220 20% 96%; /* Light Grey */
-    --foreground: 0 0% 7%; /* Near Black */
+    --background: 240 5% 96%; /* Light Grey */
+    --foreground: 240 6% 10%; /* Near Black */
+    
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
+    --card-foreground: 240 6% 10%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
-    --primary: 346 100% 59%; /* Bright Pink/Red */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 53 98% 50%; /* Bright Yellow */
-    --secondary-foreground: 0 0% 7%;
-    --muted: 220 20% 92%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 198 93% 60%; /* Bright Blue */
-    --accent-foreground: 0 0% 7%;
-    --destructive: 0 84.2% 60.2%;
+    --popover-foreground: 240 6% 10%;
+    
+    --primary: 221 83% 53%; /* Blue */
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 240 5% 90%; /* Grey for badges */
+    --secondary-foreground: 240 6% 10%;
+    
+    --muted: 240 5% 65%;
+    --muted-foreground: 240 4% 46%;
+    
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 6% 10%;
+    
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 87%;
-    --input: 0 0% 100%;
-    --ring: 198 93% 60%;
+    
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 221 83% 53%;
+    
     --radius: 0.5rem; 
   }
 
   .dark {
-    --background: 0 0% 7%; /* Near Black */
-    --foreground: 0 0% 96%; /* Light Grey */
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 96%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 96%;
-    --primary: 346 100% 59%; /* Bright Pink/Red */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 53 98% 50%; /* Bright Yellow */
-    --secondary-foreground: 0 0% 7%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 198 93% 60%; /* Bright Blue */
-    --accent-foreground: 0 0% 7%;
-    --destructive: 0 62.8% 30.6%;
+    --background: 240 6% 10%; /* Near Black */
+    --foreground: 0 0% 98%; /* Light Grey */
+
+    --card: 240 4% 12%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 240 6% 10%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 217 91% 60%; /* Brighter Blue for Dark Mode */
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 240 4% 18%; /* Darker Grey for badges */
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 4% 25%;
+    --muted-foreground: 240 5% 65%;
+    
+    --accent: 240 4% 18%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 20%;
-    --input: 0 0% 10%;
-    --ring: 198 93% 60%;
+    
+    --border: 240 4% 18%;
+    --input: 240 4% 18%;
+    --ring: 217 91% 60%;
   }
 }
 

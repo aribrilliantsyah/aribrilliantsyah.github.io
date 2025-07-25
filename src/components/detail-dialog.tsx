@@ -45,7 +45,7 @@ export function DetailDialog({ content, onOpenChange }: DetailDialogProps) {
                     <Image 
                         src={content.image} 
                         alt={content.title}
-                        layout="fill"
+                        fill
                         objectFit="cover"
                         data-ai-hint={content.imageHint}
                     />
@@ -53,7 +53,7 @@ export function DetailDialog({ content, onOpenChange }: DetailDialogProps) {
               )}
               <div className="flex flex-wrap gap-2">
                 {content.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="bg-accent/80 text-accent-foreground">
+                  <Badge key={tag} variant="secondary">
                     {tag}
                   </Badge>
                 ))}
