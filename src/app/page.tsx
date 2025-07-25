@@ -278,6 +278,19 @@ export default function CodeFolioPage() {
                 </div>
             </GridCard>
 
+            <GridCard>
+                 <SectionTitle title="Social Media"/>
+                 <div className="flex items-center gap-2 h-full">
+                    {socialLinks.map((link, i) => (
+                        <a key={i} href={link.href} target="_blank" rel="noopener noreferrer" className="flex-1">
+                            <Button variant="outline" size="icon" className="w-full h-12 rounded-full">
+                                <link.icon size={16}/>
+                            </Button>
+                        </a>
+                    ))}
+                 </div>
+            </GridCard>
+
             <GridCard className="col-span-1 lg:col-span-2 row-span-2">
                 <SectionTitle title="Experience"/>
                 <ScrollArea className="h-[260px] pr-3 -mr-3">
@@ -334,7 +347,6 @@ export default function CodeFolioPage() {
                  </div>
             </GridCard>
 
-
              <GridCard className="lg:col-span-2">
                 <SectionTitle title="Education"/>
                  <ScrollArea className="h-full pr-3 -mr-3">
@@ -353,23 +365,6 @@ export default function CodeFolioPage() {
                         ))}
                     </div>
                 </ScrollArea>
-            </GridCard>
-
-            <GridCard>
-                 <SectionTitle title="Social Media"/>
-                 <div className="flex items-center gap-2">
-                    {socialLinks.map((link, i) => (
-                        <a key={i} href={link.href} target="_blank" rel="noopener noreferrer" className="flex-1">
-                            <Button variant="outline" size="icon" className="w-full h-12 rounded-full">
-                                <link.icon size={16}/>
-                            </Button>
-                        </a>
-                    ))}
-                 </div>
-            </GridCard>
-
-            <GridCard>
-                {/* Empty card for layout balance */}
             </GridCard>
         </main>
         
