@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server } from 'lucide-react';
 import Image from 'next/image';
 import { Clock } from '@/components/clock';
 import { cn } from '@/lib/utils';
@@ -148,6 +148,13 @@ const socialLinks = [
   { icon: Mail, href: 'mailto:ari.ardiansyah.101@gmail.com' },
 ];
 
+const topSkills = [
+    { icon: BrainCircuit, title: 'Backend', description: 'Spring Boot, Go, Node.js' },
+    { icon: Code, title: 'Frontend', description: 'React, Next.js, Vue' },
+    { icon: Database, title: 'Databases', description: 'MySQL, PostgreSQL, Redis' },
+    { icon: Server, title: 'DevOps', description: 'Kubernetes, Docker, CI/CD' }
+]
+
 const GridCard: FC<{ children: React.ReactNode; className?: string, title?: string }> = ({ children, className, title }) => (
     <Card className={cn("p-4 md:p-6 border border-border/50 rounded-lg flex flex-col shadow-sm", className)}>
       {title && (
@@ -171,10 +178,10 @@ export default function CodeFolioPage() {
     useEffect(() => {
         const timerId = setInterval(() => setTime(new Date()), 1000);
 
-        const startDate = new Date(2018, 5, 1); // June 2018
+        const startDate = new Date(2017, 6, 1); // July 2017
         const currentDate = new Date();
         const diff = (currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-        setYearsOfExperience(diff.toFixed(1));
+        setYearsOfExperience(Math.floor(diff).toString());
         
         return () => clearInterval(timerId);
     }, []);
@@ -199,7 +206,7 @@ export default function CodeFolioPage() {
             <GridCard className="lg:col-span-2">
                 <SectionTitle title="About"/>
                  <p className="text-sm text-foreground/90">
-                    With over 5 years of dedicated experience in the IT industry, I am a results-oriented developer with a proven career track record, advancing from a Junior Developer to a Project Lead. I specialize in building robust and scalable applications, leveraging modern technologies like Spring Boot, Kubernetes, and Go. My journey reflects a commitment to continuous learning, collaboration, and delivering high-quality digital solutions.
+                    With over 7 years of dedicated experience in the IT industry, I am a results-oriented developer with a proven career track record, advancing from a Junior Developer to a Project Lead. I specialize in building robust and scalable applications, leveraging modern technologies like Spring Boot, Kubernetes, and Go. My journey reflects a commitment to continuous learning, collaboration, and delivering high-quality digital solutions.
                 </p>
             </GridCard>
             
@@ -295,16 +302,13 @@ export default function CodeFolioPage() {
             
             <GridCard>
                  <SectionTitle title="Years of Experience"/>
-                 <div className="flex items-center justify-center h-full">
-                    <p className="text-6xl font-bold text-foreground">{yearsOfExperience}</p>
+                 <div className="flex flex-col items-center justify-center h-full text-center">
+                    <p className="text-6xl font-bold text-foreground">{yearsOfExperience}+</p>
+                    <p className="text-xs text-muted-foreground mt-1">Years of professional experience</p>
                  </div>
             </GridCard>
             
             <GridCard>
-                {/* Empty card for layout balance */}
-            </GridCard>
-
-             <GridCard>
                 <SectionTitle title="Quote"/>
                  <div className="flex flex-col items-center justify-center h-full text-center">
                     <Quote className="size-8 text-muted-foreground mb-2" />
@@ -312,6 +316,24 @@ export default function CodeFolioPage() {
                     <p className="text-xs text-muted-foreground mt-2">- Steve Jobs</p>
                  </div>
             </GridCard>
+
+             <GridCard className="lg:col-span-2">
+                 <SectionTitle title="Top Skills"/>
+                 <div className="grid grid-cols-2 gap-4 h-full">
+                    {topSkills.map((skill, i) => (
+                        <div key={i} className="flex items-center gap-4 p-2 rounded-md bg-secondary/50">
+                            <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground">
+                                <skill.icon size={20}/>
+                            </div>
+                            <div>
+                                <h3 className="font-medium text-sm text-foreground">{skill.title}</h3>
+                                <p className="text-xs text-muted-foreground">{skill.description}</p>
+                            </div>
+                        </div>
+                    ))}
+                 </div>
+            </GridCard>
+
 
              <GridCard className="lg:col-span-2">
                 <SectionTitle title="Education"/>
