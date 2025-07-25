@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight, Code, GraduationCap, Briefcase, Heart, Quote, BrainCircuit, Database, Server, Layers, Smartphone, Bot } from 'lucide-react';
 import Image from 'next/image';
 import { Clock } from '@/components/clock';
 import { cn } from '@/lib/utils';
@@ -152,8 +152,13 @@ const topSkills = [
     { icon: BrainCircuit, title: 'Backend', description: 'Spring Boot, Go, Node.js' },
     { icon: Code, title: 'Frontend', description: 'React, Next.js, Vue' },
     { icon: Database, title: 'Databases', description: 'MySQL, PostgreSQL, Redis' },
-    { icon: Server, title: 'DevOps', description: 'Kubernetes, Docker, CI/CD' }
-]
+    { icon: Server, title: 'DevOps', description: 'Kubernetes, Docker, CI/CD' },
+    { icon: Layers, title: 'Full Stack', description: 'End-to-end development' },
+    { icon: Bot, title: 'Laravel', description: 'PHP Framework' },
+    { icon: Bot, title: 'CodeIgniter 3', description: 'PHP Framework' },
+    { icon: Smartphone, title: 'Java Android', description: 'Native Android Dev' },
+    { icon: Smartphone, title: 'Flutter', description: 'Cross-platform Mobile' },
+];
 
 const GridCard: FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
     <Card className={cn("p-4 md:p-6 border border-border/50 rounded-lg flex flex-col shadow-sm", className)}>
@@ -241,7 +246,7 @@ export default function CodeFolioPage() {
              <GridCard className="col-span-1 lg:col-span-2 row-span-3">
                  <div className="relative w-full h-full rounded-md overflow-hidden">
                     <Image
-                        src="https://images.unsplash.com/photo-1542296332-9a572a15423d?q=80&w=1964"
+                        src="https://images.unsplash.com/photo-1517547102324-4e7e99e0b8a4?q=80&w=1964"
                         alt="Portfolio image"
                         layout="fill"
                         objectFit="cover"
@@ -325,14 +330,14 @@ export default function CodeFolioPage() {
 
              <GridCard className="lg:col-span-2">
                  <SectionTitle title="Top Skills"/>
-                 <div className="grid grid-cols-2 gap-4 h-full content-center">
+                 <div className="grid grid-cols-3 gap-4 h-full content-center">
                     {topSkills.map((skill, i) => (
-                        <div key={i} className="flex items-center gap-4 p-2 rounded-md bg-secondary/50">
+                        <div key={i} className="flex items-center gap-3 p-2 rounded-md bg-secondary/50">
                             <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
                                 <skill.icon size={20}/>
                             </div>
                             <div>
-                                <h3 className="font-medium text-base text-foreground">{skill.title}</h3>
+                                <h3 className="font-medium text-sm text-foreground">{skill.title}</h3>
                                 <p className="text-xs text-muted-foreground">{skill.description}</p>
                             </div>
                         </div>
@@ -372,3 +377,5 @@ export default function CodeFolioPage() {
     </div>
   );
 }
+
+    
