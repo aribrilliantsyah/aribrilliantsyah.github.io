@@ -248,7 +248,7 @@ export default function CodeFolioPage() {
                  </ScrollArea>
             </GridCard>
 
-             <GridCard className="col-span-1 lg:col-span-2 row-span-3">
+             <GridCard className="col-span-1 lg:col-span-2 row-span-3 !p-0">
                  <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
                         src="https://images.unsplash.com/photo-1611638281871-1063d3e76e1f?q=80&w=1964"
@@ -335,14 +335,14 @@ export default function CodeFolioPage() {
 
              <GridCard className="lg:col-span-2">
                 <SectionTitle title="Top Skills"/>
-                 <div className="grid grid-cols-2 grid-rows-3 gap-x-4 gap-y-4 h-full">
+                 <div className="grid grid-cols-2 grid-rows-3 gap-4 h-full">
                     {topSkills.map((skill, i) => (
-                         <div key={i} className="flex items-center gap-4 p-2 rounded-md bg-secondary/50">
+                        <div key={i} className="flex items-start gap-4 p-3 rounded-lg bg-secondary/50">
                             <div className="size-10 rounded-md bg-muted flex items-center justify-center text-muted-foreground flex-shrink-0">
                                 <skill.icon size={20}/>
                             </div>
                             <div className="flex-1">
-                                <h3 className="font-medium text-base text-foreground">{skill.title}</h3>
+                                <h3 className="font-medium text-base text-foreground mb-1">{skill.title}</h3>
                                 <p className="text-xs text-muted-foreground">{skill.description}</p>
                             </div>
                         </div>
@@ -356,25 +356,18 @@ export default function CodeFolioPage() {
                  <ScrollArea className="h-full pr-3 -mr-3">
                     <div className="space-y-4">
                          {education.sort((a, b) => {
+                            const aYear = parseInt(a.date.split(' - ')[0]);
+                            const bYear = parseInt(b.date.split(' - ')[0]);
+                            if (aYear !== bYear) return bYear - aYear;
+
                             if (a.date.includes('Present')) return -1;
                             if (b.date.includes('Present')) return 1;
 
-                            const aYear = parseInt(a.date.split(' - ')[0]);
-                            const bYear = parseInt(b.date.split(' - ')[0]);
-
-                            if (!isNaN(aYear) && !isNaN(bYear)) {
-                                if (aYear !== bYear) return bYear - aYear;
-                            }
-                            
                             const aDateMatch = a.date.match(/\d{4}/g);
                             const bDateMatch = b.date.match(/\d{4}/g);
-
                             const aEndDate = aDateMatch ? parseInt(aDateMatch[aDateMatch.length - 1]) : 0;
                             const bEndDate = bDateMatch ? parseInt(bDateMatch[bDateMatch.length - 1]) : 0;
-
-                            if(aEndDate !== bEndDate) return bEndDate - aEndDate;
-
-                            return 0;
+                            return bEndDate - aEndDate;
                         }).map((edu, i) => (
                              <div key={i} className="flex items-start gap-4">
                                 <div className="size-10 rounded-full bg-secondary flex items-center justify-center border flex-shrink-0">
@@ -392,7 +385,7 @@ export default function CodeFolioPage() {
             </GridCard>
         </main>
         
-        <footer className="flex justify-between items-center mt-8 text-xs text-muted-foreground">
+        <footer className="flex justify-between items-center mt-16 pt-8 border-t text-xs text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Ari Ardiansyah.</p>
           <div className="flex items-center gap-1">
             <p>Crafted with</p>
@@ -402,7 +395,4 @@ export default function CodeFolioPage() {
       </div>
     </div>
   );
-
-    
-
-    
+}
