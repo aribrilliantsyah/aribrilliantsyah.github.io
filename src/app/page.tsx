@@ -20,6 +20,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { Skeleton } from '@/components/ui/skeleton';
 
 
 const projects = [
@@ -160,7 +161,7 @@ const topSkills = [
 ];
 
 const GridCard: FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
-    <Card className={cn("p-4 md:p-6 border border-border rounded-lg flex flex-col", className)}>
+    <Card className={cn("p-4 md:p-6 border border-border flex flex-col", className)}>
         {children}
     </Card>
 );
@@ -174,6 +175,7 @@ const SectionTitle: FC<{ title: string; showName?: boolean }> = ({ title, showNa
 
 
 export default function CodeFolioPage() {
+    const [isLoading, setIsLoading] = useState(true);
     const [time, setTime] = useState<Date | null>(null);
     const [yearsOfExperience, setYearsOfExperience] = useState<string>('0');
 
@@ -184,9 +186,50 @@ export default function CodeFolioPage() {
         const currentDate = new Date();
         const diff = (currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
         setYearsOfExperience(Math.floor(diff).toString());
+
+        const loadingTimer = setTimeout(() => setIsLoading(false), 500);
         
-        return () => clearInterval(timerId);
+        return () => {
+            clearInterval(timerId);
+            clearTimeout(loadingTimer);
+        }
     }, []);
+
+  if (isLoading) {
+    return (
+        <div className="bg-background min-h-screen text-foreground">
+            <div className="max-w-screen-xl mx-auto p-4 md:p-8">
+                 <header className="flex justify-between items-center mb-8">
+                    <div className="flex items-center gap-4">
+                        <Skeleton className="h-10 w-10 rounded-full" />
+                        <Skeleton className="h-6 w-32" />
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Skeleton className="h-10 w-10" />
+                        <Skeleton className="h-10 w-36 hidden md:inline-flex" />
+                        <Skeleton className="h-10 w-10 md:hidden" />
+                        <Skeleton className="h-10 w-32 hidden md:inline-flex" />
+                        <Skeleton className="h-10 w-10 md:hidden" />
+                    </div>
+                </header>
+                <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {Array.from({ length: 12 }).map((_, i) => (
+                         <Skeleton key={i} className={cn(
+                            "rounded-lg",
+                            i === 0 && "lg:col-span-2 h-32",
+                            i === 1 && "lg:col-span-2 row-span-2 h-64",
+                            i === 2 && "col-span-1 lg:col-span-2 row-span-3 h-80",
+                            i === 3 && "h-32",
+                            i === 4 && "h-32",
+                            i === 5 && "col-span-1 lg:col-span-2 row-span-2 h-64",
+                            i > 5 && "h-32"
+                        )} />
+                    ))}
+                </main>
+            </div>
+        </div>
+    )
+  }
 
   return (
     <div className="bg-background min-h-screen text-foreground">
@@ -284,10 +327,10 @@ export default function CodeFolioPage() {
                         </div>
                     ) : (
                          <div className="flex items-center gap-3">
-                            <div className="size-12 rounded-full bg-secondary animate-pulse" />
+                            <Skeleton className="size-12 rounded-full" />
                             <div>
-                                <div className="h-6 w-16 bg-secondary rounded-md animate-pulse" />
-                                <div className="h-4 w-20 bg-secondary rounded-md mt-1 animate-pulse" />
+                                <Skeleton className="h-6 w-16" />
+                                <Skeleton className="h-4 w-20 mt-1" />
                             </div>
                         </div>
                     )}
@@ -406,9 +449,4 @@ export default function CodeFolioPage() {
       </div>
     </div>
   );
-
-    
-
-    
-
-    
+}
