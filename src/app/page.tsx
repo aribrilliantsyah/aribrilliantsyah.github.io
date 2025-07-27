@@ -161,7 +161,7 @@ const topSkills = [
 ];
 
 const GridCard: FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
-    <Card className={cn("p-4 md:p-6 border border-border flex flex-col", className)}>
+    <Card className={cn("p-4 md:p-6 border flex flex-col", className)}>
         {children}
     </Card>
 );
@@ -184,8 +184,12 @@ export default function CodeFolioPage() {
 
         const startDate = new Date(2017, 6, 1); // July 2017
         const currentDate = new Date();
-        const diff = (currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-        setYearsOfExperience(Math.floor(diff).toString());
+        let years = currentDate.getFullYear() - startDate.getFullYear();
+        const m = currentDate.getMonth() - startDate.getMonth();
+        if (m < 0 || (m === 0 && currentDate.getDate() < startDate.getDate())) {
+            years--;
+        }
+        setYearsOfExperience(years.toString());
 
         const loadingTimer = setTimeout(() => setIsLoading(false), 500);
         
@@ -218,7 +222,7 @@ export default function CodeFolioPage() {
                             "rounded-lg",
                             i === 0 && "lg:col-span-2 h-32",
                             i === 1 && "lg:col-span-2 row-span-2 h-64",
-                            i === 2 && "col-span-1 lg:col-span-2 row-span-3 h-80",
+                            i === 2 && "col-span-1 lg:col-span-2 row-span-3 min-h-[300px]",
                             i === 3 && "h-32",
                             i === 4 && "h-32",
                             i === 5 && "col-span-1 lg:col-span-2 row-span-2 h-64",
@@ -302,7 +306,7 @@ export default function CodeFolioPage() {
                  </ScrollArea>
             </GridCard>
 
-             <GridCard className="col-span-1 lg:col-span-2 row-span-3 !p-0 min-h-[300px]">
+             <GridCard className="col-span-1 lg:col-span-2 row-span-3 min-h-[300px] !p-0">
                  <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image
                         src="https://images.unsplash.com/photo-1611638281871-1063d3e76e1f"
@@ -450,3 +454,5 @@ export default function CodeFolioPage() {
     </div>
   );
 }
+
+    
