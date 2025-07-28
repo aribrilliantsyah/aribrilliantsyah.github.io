@@ -240,7 +240,7 @@ export default function CodeFolioPage() {
       <div className="max-w-screen-xl mx-auto p-4 md:p-8">
         <header className="flex justify-between items-center mb-8">
             <div className="flex items-center gap-4">
-                <Image src="https://placehold.co/40x40.png" alt="Ari Ardiansyah" width={40} height={40} className="rounded-full" data-ai-hint="profile picture" />
+                <Image src="/pp.png" alt="Ari Ardiansyah" width={40} height={40} className="rounded-full" />
                 <h1 className="text-xl font-bold font-headline">Ari Ardiansyah</h1>
             </div>
              <div className="flex items-center gap-2">
