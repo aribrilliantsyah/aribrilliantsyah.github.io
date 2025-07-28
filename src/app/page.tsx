@@ -147,8 +147,8 @@ const education = [
 
 const socialLinks = [
   { icon: Linkedin, href: 'https://www.linkedin.com/in/ari-ardiansyah101' },
-  { icon: Github, href: 'https://github.com/iAri' },
-  { icon: Mail, href: 'mailto:ari.ardiansyah.101@gmail.com' },
+  { icon: Github, href: 'https://github.com/aribrilliantsyah' },
+  { icon: Mail, href: 'mailto:ariardiansyah.study@gmail.com' },
 ];
 
 const topSkills = [
@@ -253,7 +253,7 @@ export default function CodeFolioPage() {
                         <Download />
                     </Button>
                 </a>
-                <a href="mailto:ari.ardiansyah.101@gmail.com">
+                <a href="mailto:ariardiansyah.study@gmail.com">
                     <Button className="hidden md:inline-flex">
                         Let's Talk <ArrowUpRight className="ml-2" />
                     </Button>
