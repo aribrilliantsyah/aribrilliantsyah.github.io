@@ -176,10 +176,12 @@ const SectionTitle: FC<{ title: string; showName?: boolean }> = ({ title, showNa
 
 export default function CodeFolioPage() {
     const [isLoading, setIsLoading] = useState(true);
+    const [isMounted, setIsMounted] = useState(false);
     const [time, setTime] = useState<Date | null>(null);
     const [yearsOfExperience, setYearsOfExperience] = useState<string>('0');
 
     useEffect(() => {
+        setIsMounted(true);
         const timerId = setInterval(() => setTime(new Date()), 1000);
 
         const startDate = new Date(2017, 6, 1); // July 2017
@@ -198,6 +200,10 @@ export default function CodeFolioPage() {
             clearTimeout(loadingTimer);
         }
     }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   if (isLoading) {
     return (
@@ -454,5 +460,3 @@ export default function CodeFolioPage() {
     </div>
   );
 }
-
-    

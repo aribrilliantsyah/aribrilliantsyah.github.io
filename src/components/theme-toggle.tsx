@@ -10,26 +10,22 @@ export function ThemeToggle() {
   const [theme, setTheme] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    const storedTheme = localStorage.getItem('theme');
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    const initialTheme = storedTheme || systemTheme;
-    setTheme(initialTheme);
-  }, []);
-
-  React.useEffect(() => {
-    if (theme) {
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+    // We need to check if we're on the client side before accessing localStorage
+    if (typeof window !== 'undefined') {
+        const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        setTheme(currentTheme);
     }
-  }, [theme]);
+  }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   if (theme === null) {
@@ -44,5 +40,3 @@ export function ThemeToggle() {
     </Button>
   );
 }
-
-    
