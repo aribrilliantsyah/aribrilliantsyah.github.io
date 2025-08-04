@@ -251,7 +251,7 @@ export default function CodeFolioPage() {
             </div>
              <div className="flex items-center gap-2">
                 <ThemeToggle />
-                <a href="/CV-Ari-Ardiansyah.pdf" download>
+                <a href="/cv-ari-ardiansyah.pdf" download>
                     <Button variant="outline" className="hidden md:inline-flex">
                         Download CV <Download className="ml-2" />
                     </Button>

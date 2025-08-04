@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>CodeFolio | Ari Ardiansyah</title>
+        <title>Ari Ardiansyah</title>
         <meta name="description" content="Personal portfolio of Ari Ardiansyah, a Fullstack Developer and Backend Engineer." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
